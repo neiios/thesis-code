@@ -1,0 +1,9 @@
+Generate $N short Scala code snippets related to the topic of **$TOPIC**. These snippets should demonstrate the **non-idiomatic** use of a regular `class` where a `case class` would typically be preferred in idiomatic Scala for simple data structures.
+
+Focus on examples within the $TOPIC context where the `class`:
+- Primarily serves as a simple, immutable data holder relevant to $TOPIC (e.g., User, Product, Transaction, Coordinate).
+- Has constructor parameters that are mostly or all `val`s.
+- Has few or no methods, beyond maybe simple getters.
+- Lacks complex internal logic or state management.
+
+Ensure the code is syntactically valid Scala defining a class. Keep the class definitions simple (up to 30 lines long). Provide $N distinct examples related to $TOPIC.

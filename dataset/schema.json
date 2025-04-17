@@ -1,0 +1,21 @@
+{
+  "type": "object",
+  "properties": {
+    "snippets": {
+      "type": "array",
+      "items": {
+        "type": "object",
+        "properties": {
+          "code": {
+            "description": "The raw Scala code snippet text.",
+            "type": "string"
+          }
+        },
+        "required": ["code"],
+        "additionalProperties": false
+      }
+    }
+  },
+  "required": ["snippets"],
+  "additionalProperties": false
+}

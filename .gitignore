@@ -1,0 +1,9 @@
+.metals
+.vscode
+.scala-build
+.bsp
+
+.env
+
+.direnv
+
