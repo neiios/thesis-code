@@ -6,7 +6,6 @@
 import sttp.client4.quick.*
 import sttp.client4.upicklejson.default.*
 import java.time.Instant
-import java.util.Random
 import upickle.default.*
 import os.{Path, RelPath, pwd}
 
@@ -14,8 +13,7 @@ case class Config(
   baseUrl: String,
   model: String,
   samplesPerRequest: Int,
-  totalSamplesPerCategory: Int,
-  randomSeed: Int,
+  snippetsPerTopic: Int,
   topicsFile: String,
   schemaFile: String,
   promptFilesConfig: Map[String, String],
@@ -41,17 +39,14 @@ case class Choice(message: Message) derives ReadWriter
 case class Message(content: String) derives ReadWriter
 
 def loadConfig(configPath: Path): Config =
-  if !os.exists(configPath) then
-    throw Exception(s"Config file not found at $configPath")
+  if !os.exists(configPath) then throw Exception(s"Config file not found at $configPath")
   val configJson = os.read(configPath)
   val config = read[Config](configJson)
-  val apiKey = sys.env.getOrElse("MODEL_API_KEY", 
-    throw Exception("MODEL_API_KEY environment variable is not set"))
+  val apiKey = sys.env.getOrElse("MODEL_API_KEY", throw Exception("MODEL_API_KEY environment variable is not set"))
   config.copy(apiKey = apiKey)
 
 def loadSchema(schemaPath: Path): ujson.Value =
-  if !os.exists(schemaPath) then
-    throw Exception(s"Schema file not found at $schemaPath")
+  if !os.exists(schemaPath) then throw Exception(s"Schema file not found at $schemaPath")
 
   val schemaContent = os.read(schemaPath)
   val schema = read[ujson.Value](schemaContent)
@@ -59,22 +54,27 @@ def loadSchema(schemaPath: Path): ujson.Value =
   schema
 
 def loadTopics(topicsPath: Path): List[String] =
-  if !os.exists(topicsPath) then
-    throw Exception(s"Topics file not found at $topicsPath")
+  if !os.exists(topicsPath) then throw Exception(s"Topics file not found at $topicsPath")
 
   val topicsContent = os.read(topicsPath)
   val topics = read[List[String]](topicsContent)
-  
-  if topics.isEmpty then
-    throw Exception(s"Topics file $topicsPath must contain a non-empty list")
-  
+
+  if topics.isEmpty then throw Exception(s"Topics file $topicsPath must contain a non-empty list")
+
   println(s"Loaded ${topics.size} topics from $topicsPath")
   topics
 
-def countExistingSnippets(filePath: Path): Int =
+def countExistingSnippets(filePath: Path, topic: String): Int =
   if !os.exists(filePath) then 0
-  else os.read.lines(filePath).size
-    
+  else
+    val lines = os.read.lines(filePath)
+    lines.count { line =>
+      try
+        val record = read[OutputLine](line)
+        record.topicUsed == topic
+      catch case _: Exception => false
+    }
+
 def generateCodeSnippets(config: Config, prompt: String, schema: ujson.Value, model: String): Seq[Snippet] =
   val requestBody = ujson.Obj(
     "model" -> model,
@@ -103,108 +103,107 @@ def generateCodeSnippets(config: Config, prompt: String, schema: ujson.Value, mo
 
   try
     val apiResponse = read[ApiResponse](response.body)
-    val content = apiResponse.choices.headOption.map(_.message.content)
+    val content = apiResponse.choices.headOption
+      .map(_.message.content)
       .getOrElse(throw Exception("No content in API response"))
     val snippetsResponse = read[SnippetsResponse](content)
     snippetsResponse.snippets
   catch
-    case e: Exception => 
-      throw Exception(s"Failed to parse API response: ${e.getMessage}. Response body: $response.body")
+    case e: Exception =>
+      throw Exception(s"Failed to parse API response: ${e.getMessage}. Response: ${response.body}")
 
 def processCategory(
-  config: Config, 
-  category: String, 
-  promptPath: Path, 
-  topics: List[String], 
-  schema: ujson.Value, 
-  random: Random,
+  config: Config,
+  category: String,
+  promptPath: Path,
+  topics: List[String],
+  schema: ujson.Value,
   outputDir: Path
 ): Int =
   println(s"\n--- Generating snippets for category: $category ---")
-  
+
   if !os.exists(promptPath) then
     println(s"Error: Prompt file $promptPath not found. Skipping category $category.")
     return 0
-  
-  val templateContent = os.read(promptPath)
-  
-  val outputFile = outputDir / config.outputFileTemplate.format(category)
-  
-  val existingCount = countExistingSnippets(outputFile)
-  if existingCount >= config.totalSamplesPerCategory then
-    println(s"Category $category already has $existingCount snippets. Skipping.")
-    return 0
-  
-  if existingCount > 0 then
-    println(s"Resuming category $category: $existingCount snippets already exist")
-  
-  var snippetsGenerated = 0
-  
-  os.makeDir.all(outputFile / os.up)
-  
-  val outStream = os.write.append.outputStream(outputFile)
-  try
-    while existingCount + snippetsGenerated < config.totalSamplesPerCategory do
-      val remaining = config.totalSamplesPerCategory - (existingCount + snippetsGenerated)
-      val batchSize = math.min(config.samplesPerRequest, remaining)
-      
-      val topic = topics(random.nextInt(topics.size))
-      println(s"Generating $batchSize snippets for topic '$topic'...")
-      
-      val prompt = templateContent
-        .replace("$N", batchSize.toString)
-        .replace("$TOPIC", topic)
-      
-      val snippets = generateCodeSnippets(config, prompt, schema, config.model)
-      println(s"Received ${snippets.size} snippets")
-      
-      snippets.zipWithIndex.foreach { case (snippet, index) =>
-        val record = OutputLine(
-          id = s"${category}_${existingCount + snippetsGenerated + index + 1}",
-          timestamp = Instant.now().toEpochMilli,
-          code = snippet.code,
-          category = category,
-          topicUsed = topic
-        )
-        val line = write(record) + "\n"
-        outStream.write(line.getBytes("UTF-8"))
-        snippetsGenerated += 1
-      }
-      
-      val total = existingCount + snippetsGenerated
-      println(s"Progress: $total/${config.totalSamplesPerCategory} for $category")
-    
-      if existingCount + snippetsGenerated < config.totalSamplesPerCategory then
-        Thread.sleep(config.requestDelaySeconds * 1000)
-  finally
-    outStream.close()
-  
-  println(s"Completed $category: Generated $snippetsGenerated new snippets")
-  snippetsGenerated
 
-def processAllCategories(
-  config: Config, 
-  schema: ujson.Value, 
-  topics: List[String], 
-  random: Random,
+  val templateContent = os.read(promptPath)
+  val outputFile = outputDir / config.outputFileTemplate.format(category)
+
+  os.makeDir.all(outputFile / os.up)
+
+  var totalSnippetsGenerated = 0
+
+  for (topic, topicIndex) <- topics.zipWithIndex do
+    val existingCount = countExistingSnippets(outputFile, topic)
+    if existingCount >= config.snippetsPerTopic then
+      println(s"Topic '$topic' already has $existingCount snippets for category $category. Skipping.")
+    else
+      val snippetsNeeded = config.snippetsPerTopic - existingCount
+      var snippetsGenerated = 0
+
+      println(s"Generating snippets for topic '$topic' (${topicIndex + 1}/${topics.size}), need $snippetsNeeded more")
+
+      val outStream = os.write.append.outputStream(outputFile)
+      try
+        while snippetsGenerated < snippetsNeeded do
+          val batchSize = math.min(config.samplesPerRequest, snippetsNeeded - snippetsGenerated)
+
+          println(s"Requesting $batchSize snippets for topic '$topic'...")
+
+          val prompt = templateContent
+            .replace("$N", batchSize.toString)
+            .replace("$TOPIC", topic)
+
+          val snippets = generateCodeSnippets(config, prompt, schema, config.model)
+          println(s"Received ${snippets.size} snippets")
+
+          snippets.zipWithIndex.foreach { case (snippet, index) =>
+            val totalSnippets = os.read.lines(outputFile).size
+            val record = OutputLine(
+              id = s"${category}_${totalSnippets + index + 1}",
+              timestamp = Instant.now().toEpochMilli,
+              code = snippet.code,
+              category = category,
+              topicUsed = topic
+            )
+            val line = write(record) + "\n"
+            outStream.write(line.getBytes("UTF-8"))
+            snippetsGenerated += 1
+          }
+
+          println(s"Progress for topic '$topic': ${existingCount + snippetsGenerated}/${config.snippetsPerTopic}")
+
+          if snippetsGenerated < snippetsNeeded then Thread.sleep(config.requestDelaySeconds * 1000)
+      finally
+        outStream.close()
+
+      totalSnippetsGenerated += snippetsGenerated
+      println(s"Completed topic '$topic' for category $category: Generated $snippetsGenerated new snippets")
+
+  println(s"Completed category $category: Generated $totalSnippetsGenerated total new snippets across all topics")
+  totalSnippetsGenerated
+
+def processCategories(
+  config: Config,
+  schema: ujson.Value,
+  topics: List[String]
 ): Int =
   val outputDir = pwd / RelPath(config.outputDir)
   os.makeDir.all(outputDir)
-  
+
   config.promptFilesConfig.foldLeft(0) { case (total, (category, promptFilePath)) =>
     try
       val promptPath = pwd / RelPath(promptFilePath)
       val count = processCategory(
-        config = config, 
-        category = category, 
-        promptPath = promptPath, 
-        topics = topics, 
-        schema = schema, 
-        random = random,
+        config = config,
+        category = category,
+        promptPath = promptPath,
+        topics = topics,
+        schema = schema,
         outputDir = outputDir
       )
       total + count
-    catch 
+    catch
       case ex: Exception =>
         println(s"Error processing category $category: ${ex.getMessage}")
         total
@@ -212,18 +211,19 @@ def processAllCategories(
 
 @main
 def run: Unit =
-  val configPath = pwd / "config.json"
-  
-  val config = loadConfig(configPath)
-  println(s"Using random seed: ${config.randomSeed}")
-  val random = new Random(config.randomSeed)
-  
+  val config = loadConfig(pwd / "config.json")
   val schemaPath = pwd / RelPath(config.schemaFile)
   val topicsPath = pwd / RelPath(config.topicsFile)
-  
+
   os.makeDir.all(schemaPath / os.up)
-  
+
   val schema = loadSchema(schemaPath)
   val topics = loadTopics(topicsPath)
-  val totalGenerated = processAllCategories(config, schema, topics, random)
+
+  val totalExpectedSnippets = config.promptFilesConfig.size * topics.size * config.snippetsPerTopic
+  println(
+    s"Planning to generate up to $totalExpectedSnippets snippets (${config.promptFilesConfig.size} categories x ${topics.size} topics x ${config.snippetsPerTopic} snippets per topic)"
+  )
+
+  val totalGenerated = processCategories(config, schema, topics)
   println(s"\n=== Dataset generation complete. Total new snippets: $totalGenerated ===")

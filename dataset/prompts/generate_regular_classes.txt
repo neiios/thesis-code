@@ -1,4 +1,4 @@
-Generate $N short Scala code snippets related to the topic of **$TOPIC**. These snippets should demonstrate the **non-idiomatic** use of a regular `class` where a `case class` would typically be preferred in idiomatic Scala for simple data structures.
+Generate $N short Scala 3 code snippets related to the topic of **$TOPIC**. These snippets should demonstrate the **non-idiomatic** use of a regular `class` where a `case class` would typically be preferred in idiomatic Scala 3 for simple data structures.
 
 Focus on examples within the $TOPIC context where the `class`:
 - Primarily serves as a simple, immutable data holder relevant to $TOPIC (e.g., User, Product, Transaction, Coordinate).
@@ -6,4 +6,8 @@ Focus on examples within the $TOPIC context where the `class`:
 - Has few or no methods, beyond maybe simple getters.
 - Lacks complex internal logic or state management.
 
-Ensure the code is syntactically valid Scala defining a class. Keep the class definitions simple (up to 30 lines long). Provide $N distinct examples related to $TOPIC.
+Ensure the code is syntactically valid Scala 3 defining a class. 
+Keep the class definitions simple (up to 30 lines long). 
+Provide $N distinct examples related to $TOPIC.
+Add a bit of variance in the code snippets. Use a different numbers of arguments / class variables; different code structrures.
+The generated snippet should be a valid top-level Scala 3 program.
