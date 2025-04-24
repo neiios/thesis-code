@@ -1,19 +1,32 @@
 {
-  inputs.nixpkgs.url = "github:NixOS/nixpkgs/nixos-unstable";
+  inputs = {
+    nixpkgs.url = "github:NixOS/nixpkgs/nixos-unstable";
+    flake-utils.url = "github:numtide/flake-utils";
+  };
 
-  outputs = inputs: let
-    supportedSystems = [ "x86_64-linux" "aarch64-linux" "x86_64-darwin" "aarch64-darwin" ];
-    forEachSupportedSystem = f: inputs.nixpkgs.lib.genAttrs supportedSystems (system: f {
-      pkgs = import inputs.nixpkgs { inherit system; };
-    });
-  in {
-    devShells = forEachSupportedSystem ({pkgs}: {
-      default = pkgs.mkShell {
-        packages = with pkgs; [ scala-next metals scalafmt ];
-        shellHook = ''
-          source .env
-        '';
+  outputs = {
+    nixpkgs,
+    flake-utils,
+    ...
+  }:
+    flake-utils.lib.eachDefaultSystem (system: let
+      pkgs = nixpkgs.legacyPackages.${system};
+    in {
+      devShells = {
+        default = pkgs.mkShell {
+          packages = with pkgs; [
+            scala-next
+            metals
+            scalafmt
+            uv
+            ruff
+            alejandra
+          ];
+
+          shellHook = ''
+            source .env
+          '';
+        };
       };
     });
-  };
 }

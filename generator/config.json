@@ -1,0 +1,18 @@
+{
+  "baseUrl": "https://openrouter.ai/api/v1",
+  "model": "openai/gpt-4.1",
+  "samplesPerRequest": 20,
+  "snippetsPerTopic": 20,
+  "randomSeed": 42,
+  "topicsFile": "./topics.json",
+  "schemaFile": "./schema.json",
+  "prompts": {
+    "uses_throw": "./prompts/generate_throws.txt",
+    "regular_class_for_data": "./prompts/generate_regular_classes.txt",
+    "uses_null_check": "./prompts/generate_null_checks.txt",
+    "idiomatic": "./prompts/generate_idiomatic.txt"
+  },
+  "outputDir": "../dataset/raw",
+  "outputFileTemplate": "%s_snippets.jsonl",
+  "requestDelaySeconds": 3
+}

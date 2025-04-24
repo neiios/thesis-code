@@ -3,7 +3,11 @@
 .scala-build
 .bsp
 
+.venv
+__pycache__
+
 .env
 
 .direnv
 
+dataset

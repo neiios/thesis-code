@@ -1,0 +1,13 @@
+Generate $N short Scala 2.13 code snippets related to the topic of **$TOPIC**. These snippets should demonstrate the **non-idiomatic** use of `throw` for handling potentially recoverable errors or flow control, where using `Try`, `Either`, or `Option` would be more idiomatic in Scala 2.13.
+
+Focus on examples within the $TOPIC context like:
+- Throwing exceptions for invalid input that could be represented as `None` or `Left`.
+- Throwing exceptions for conditions like division by zero within a function that could return a `Try[Int]`.
+- Simple functions or expressions clearly showing the `throw new ...` pattern in a context where it's likely avoidable.
+
+Ensure the code is syntactically valid Scala 2.13. 
+Keep snippets relatively short (up to 10 to 15 lines long). 
+Provide $N distinct examples related to $TOPIC.
+Add a bit of variance in the code snippets. Use a different numbers of arguments / class variables; different code structrures.
+The generated snippet should be a valid top-level Scala 2.13 program.
+Do not include any comments in the code.
