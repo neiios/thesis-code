@@ -16,5 +16,11 @@ pushd ast-tokenizer && uv run tokenize_snippets.py \
 # Create vocabulary
 pushd vocab && uv run create_vocab.py \
   -i ../dataset/tokenized_full.jsonl \
-  -o ../dataset/vocab.jsonl && popd
+  -o ../dataset/vocab.json && popd
+
+# Train LSTM
+pushd lstm && python train_lstm.py \
+  -i ../results/tokenized_full.jsonl \
+  -v ../results/vocab.json \
+  -o ./trained_model && popd
 ```

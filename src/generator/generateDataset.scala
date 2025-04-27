@@ -13,12 +13,12 @@ object Logger:
   val runTimestamp = Instant.now().toEpochMilli
   val logFile = pwd / s"log_${runTimestamp}.txt"
 
-  def info(message: String): Unit = 
+  def info(message: String): Unit =
     os.write.append(logFile, s"[INFO] $message\n")
     println(s"[INFO] $message")
 
-  def error(message: String): Unit = 
-    os.write.append(logFile, s"[ERROR] $message\n") 
+  def error(message: String): Unit =
+    os.write.append(logFile, s"[ERROR] $message\n")
     println(s"[ERROR] $message")
 
 case class Config(
@@ -151,7 +151,9 @@ def processCategory(
     else
       val snippetsNeeded = config.snippetsPerTopic - existingCount
       var snippetsGenerated = 0
-      Logger.info(s"Generating snippets for topic '$topic' (${topicIndex + 1}/${topics.size}), need $snippetsNeeded more")
+      Logger.info(
+        s"Generating snippets for topic '$topic' (${topicIndex + 1}/${topics.size}), need $snippetsNeeded more"
+      )
 
       val outStream = os.write.append.outputStream(outputFile)
       try
