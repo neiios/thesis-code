@@ -1,0 +1,380 @@
+[INFO] Loaded schema from ./src/schema.json
+[INFO] Loaded 42 topics from ./src/topics.json
+[INFO] Planning to generate up to 5040 snippets (3 categories x 42 topics x 40 snippets per topic)
+[INFO] 
+--- Generating snippets for category: null_checks ---
+[INFO] Topic 'E-commerce checkout' already has 41 snippets for category null_checks. Skipping.
+[INFO] Topic 'Mobile banking app' already has 40 snippets for category null_checks. Skipping.
+[INFO] Topic 'Telemedicine appointment scheduling' already has 40 snippets for category null_checks. Skipping.
+[INFO] Topic 'Fitness tracker analytics' already has 41 snippets for category null_checks. Skipping.
+[INFO] Topic 'Wix backend service for managing Pricing Plans' already has 40 snippets for category null_checks. Skipping.
+[INFO] Topic 'Smart home device control' already has 40 snippets for category null_checks. Skipping.
+[INFO] Topic 'Ride-sharing dispatch' already has 54 snippets for category null_checks. Skipping.
+[INFO] Topic 'Airline ticketing system' already has 40 snippets for category null_checks. Skipping.
+[INFO] Topic 'Hotel reservation engine' already has 40 snippets for category null_checks. Skipping.
+[INFO] Topic 'Food delivery logistics' already has 40 snippets for category null_checks. Skipping.
+[INFO] Topic 'Digital music streaming' already has 40 snippets for category null_checks. Skipping.
+[INFO] Topic 'Online tutoring platform' already has 40 snippets for category null_checks. Skipping.
+[INFO] Topic 'Real-estate listing search' already has 40 snippets for category null_checks. Skipping.
+[INFO] Topic 'Cryptocurrency wallet management' already has 40 snippets for category null_checks. Skipping.
+[INFO] Topic 'Warehouse inventory tracking' already has 40 snippets for category null_checks. Skipping.
+[INFO] Topic 'Social media content moderation' already has 40 snippets for category null_checks. Skipping.
+[INFO] Topic 'Personalized news feed' already has 54 snippets for category null_checks. Skipping.
+[INFO] Topic 'Electric vehicle charging station locator' already has 40 snippets for category null_checks. Skipping.
+[INFO] Topic 'Agricultural crop monitoring' already has 40 snippets for category null_checks. Skipping.
+[INFO] Topic 'IoT sensor data aggregation' already has 40 snippets for category null_checks. Skipping.
+[INFO] Topic 'Public transit route planning' already has 40 snippets for category null_checks. Skipping.
+[INFO] Topic 'Retail point-of-sale integration' already has 40 snippets for category null_checks. Skipping.
+[INFO] Topic 'Online mortgage calculator' already has 40 snippets for category null_checks. Skipping.
+[INFO] Topic 'Telemetry for industrial machinery' already has 40 snippets for category null_checks. Skipping.
+[INFO] Topic 'Virtual reality gaming lobby' already has 40 snippets for category null_checks. Skipping.
+[INFO] Topic 'Employee time tracking' already has 41 snippets for category null_checks. Skipping.
+[INFO] Topic 'Weather alert notification service' already has 40 snippets for category null_checks. Skipping.
+[INFO] Topic 'Fraud detection in payments' already has 40 snippets for category null_checks. Skipping.
+[INFO] Topic 'Medical imaging data viewer' already has 52 snippets for category null_checks. Skipping.
+[INFO] Topic 'Wix backend service for managing Payment Links' already has 55 snippets for category null_checks. Skipping.
+[INFO] Topic 'Language translation chat bot' already has 40 snippets for category null_checks. Skipping.
+[INFO] Topic 'Energy consumption dashboard' already has 40 snippets for category null_checks. Skipping.
+[INFO] Topic 'Electronic voting tallying' already has 59 snippets for category null_checks. Skipping.
+[INFO] Topic 'Digital library catalog search' already has 40 snippets for category null_checks. Skipping.
+[INFO] Topic 'Event ticket QR validation' already has 40 snippets for category null_checks. Skipping.
+[INFO] Topic 'Drone delivery path optimization' already has 54 snippets for category null_checks. Skipping.
+[INFO] Topic 'Insurance claim submission portal' already has 40 snippets for category null_checks. Skipping.
+[INFO] Topic 'Education learning analytics' already has 40 snippets for category null_checks. Skipping.
+[INFO] Topic 'Personalized recipe recommender' already has 40 snippets for category null_checks. Skipping.
+[INFO] Topic 'Charity donation platform' already has 40 snippets for category null_checks. Skipping.
+[INFO] Topic 'Sports score live updating' already has 40 snippets for category null_checks. Skipping.
+[INFO] Topic 'Car rental fleet management' already has 40 snippets for category null_checks. Skipping.
+[INFO] Completed category null_checks: Generated 1771 total new snippets across all topics
+[INFO] 
+--- Generating snippets for category: throws ---
+[INFO] Topic 'E-commerce checkout' already has 40 snippets for category throws. Skipping.
+[INFO] Topic 'Mobile banking app' already has 40 snippets for category throws. Skipping.
+[INFO] Topic 'Telemedicine appointment scheduling' already has 40 snippets for category throws. Skipping.
+[INFO] Topic 'Fitness tracker analytics' already has 40 snippets for category throws. Skipping.
+[INFO] Topic 'Wix backend service for managing Pricing Plans' already has 40 snippets for category throws. Skipping.
+[INFO] Topic 'Smart home device control' already has 40 snippets for category throws. Skipping.
+[INFO] Topic 'Ride-sharing dispatch' already has 40 snippets for category throws. Skipping.
+[INFO] Topic 'Airline ticketing system' already has 41 snippets for category throws. Skipping.
+[INFO] Topic 'Hotel reservation engine' already has 40 snippets for category throws. Skipping.
+[INFO] Topic 'Food delivery logistics' already has 40 snippets for category throws. Skipping.
+[INFO] Topic 'Digital music streaming' already has 40 snippets for category throws. Skipping.
+[INFO] Topic 'Online tutoring platform' already has 40 snippets for category throws. Skipping.
+[INFO] Topic 'Real-estate listing search' already has 40 snippets for category throws. Skipping.
+[INFO] Topic 'Cryptocurrency wallet management' already has 40 snippets for category throws. Skipping.
+[INFO] Topic 'Warehouse inventory tracking' already has 41 snippets for category throws. Skipping.
+[INFO] Topic 'Social media content moderation' already has 40 snippets for category throws. Skipping.
+[INFO] Topic 'Personalized news feed' already has 40 snippets for category throws. Skipping.
+[INFO] Topic 'Electric vehicle charging station locator' already has 40 snippets for category throws. Skipping.
+[INFO] Topic 'Agricultural crop monitoring' already has 40 snippets for category throws. Skipping.
+[INFO] Topic 'IoT sensor data aggregation' already has 40 snippets for category throws. Skipping.
+[INFO] Topic 'Public transit route planning' already has 40 snippets for category throws. Skipping.
+[INFO] Topic 'Retail point-of-sale integration' already has 40 snippets for category throws. Skipping.
+[INFO] Topic 'Online mortgage calculator' already has 40 snippets for category throws. Skipping.
+[INFO] Topic 'Telemetry for industrial machinery' already has 40 snippets for category throws. Skipping.
+[INFO] Topic 'Virtual reality gaming lobby' already has 40 snippets for category throws. Skipping.
+[INFO] Topic 'Employee time tracking' already has 40 snippets for category throws. Skipping.
+[INFO] Topic 'Weather alert notification service' already has 41 snippets for category throws. Skipping.
+[INFO] Topic 'Fraud detection in payments' already has 40 snippets for category throws. Skipping.
+[INFO] Topic 'Medical imaging data viewer' already has 40 snippets for category throws. Skipping.
+[INFO] Topic 'Wix backend service for managing Payment Links' already has 40 snippets for category throws. Skipping.
+[INFO] Topic 'Language translation chat bot' already has 41 snippets for category throws. Skipping.
+[INFO] Topic 'Energy consumption dashboard' already has 40 snippets for category throws. Skipping.
+[INFO] Generating snippets for topic 'Electronic voting tallying' (33/42), need 20 more
+[INFO] Requesting 20 snippets for topic 'Electronic voting tallying'...
+[INFO] Received 20 snippets
+[INFO] Progress for topic 'Electronic voting tallying': 40/40
+[INFO] Completed topic 'Electronic voting tallying' for category throws: Generated 20 new snippets
+[INFO] Generating snippets for topic 'Digital library catalog search' (34/42), need 40 more
+[INFO] Requesting 20 snippets for topic 'Digital library catalog search'...
+[INFO] Received 20 snippets
+[INFO] Progress for topic 'Digital library catalog search': 20/40
+[INFO] Requesting 20 snippets for topic 'Digital library catalog search'...
+[INFO] Received 21 snippets
+[INFO] Progress for topic 'Digital library catalog search': 41/40
+[INFO] Completed topic 'Digital library catalog search' for category throws: Generated 41 new snippets
+[INFO] Generating snippets for topic 'Event ticket QR validation' (35/42), need 40 more
+[INFO] Requesting 20 snippets for topic 'Event ticket QR validation'...
+[INFO] Received 20 snippets
+[INFO] Progress for topic 'Event ticket QR validation': 20/40
+[INFO] Requesting 20 snippets for topic 'Event ticket QR validation'...
+[INFO] Received 20 snippets
+[INFO] Progress for topic 'Event ticket QR validation': 40/40
+[INFO] Completed topic 'Event ticket QR validation' for category throws: Generated 40 new snippets
+[INFO] Generating snippets for topic 'Drone delivery path optimization' (36/42), need 40 more
+[INFO] Requesting 20 snippets for topic 'Drone delivery path optimization'...
+[INFO] Received 21 snippets
+[INFO] Progress for topic 'Drone delivery path optimization': 21/40
+[INFO] Requesting 19 snippets for topic 'Drone delivery path optimization'...
+[INFO] Received 19 snippets
+[INFO] Progress for topic 'Drone delivery path optimization': 40/40
+[INFO] Completed topic 'Drone delivery path optimization' for category throws: Generated 40 new snippets
+[INFO] Generating snippets for topic 'Insurance claim submission portal' (37/42), need 40 more
+[INFO] Requesting 20 snippets for topic 'Insurance claim submission portal'...
+[INFO] Received 20 snippets
+[INFO] Progress for topic 'Insurance claim submission portal': 20/40
+[INFO] Requesting 20 snippets for topic 'Insurance claim submission portal'...
+[INFO] Received 20 snippets
+[INFO] Progress for topic 'Insurance claim submission portal': 40/40
+[INFO] Completed topic 'Insurance claim submission portal' for category throws: Generated 40 new snippets
+[INFO] Generating snippets for topic 'Education learning analytics' (38/42), need 40 more
+[INFO] Requesting 20 snippets for topic 'Education learning analytics'...
+[INFO] Received 20 snippets
+[INFO] Progress for topic 'Education learning analytics': 20/40
+[INFO] Requesting 20 snippets for topic 'Education learning analytics'...
+[INFO] Received 20 snippets
+[INFO] Progress for topic 'Education learning analytics': 40/40
+[INFO] Completed topic 'Education learning analytics' for category throws: Generated 40 new snippets
+[INFO] Generating snippets for topic 'Personalized recipe recommender' (39/42), need 40 more
+[INFO] Requesting 20 snippets for topic 'Personalized recipe recommender'...
+[INFO] Received 20 snippets
+[INFO] Progress for topic 'Personalized recipe recommender': 20/40
+[INFO] Requesting 20 snippets for topic 'Personalized recipe recommender'...
+[INFO] Received 20 snippets
+[INFO] Progress for topic 'Personalized recipe recommender': 40/40
+[INFO] Completed topic 'Personalized recipe recommender' for category throws: Generated 40 new snippets
+[INFO] Generating snippets for topic 'Charity donation platform' (40/42), need 40 more
+[INFO] Requesting 20 snippets for topic 'Charity donation platform'...
+[INFO] Received 21 snippets
+[INFO] Progress for topic 'Charity donation platform': 21/40
+[INFO] Requesting 19 snippets for topic 'Charity donation platform'...
+[INFO] Received 19 snippets
+[INFO] Progress for topic 'Charity donation platform': 40/40
+[INFO] Completed topic 'Charity donation platform' for category throws: Generated 40 new snippets
+[INFO] Generating snippets for topic 'Sports score live updating' (41/42), need 40 more
+[INFO] Requesting 20 snippets for topic 'Sports score live updating'...
+[INFO] Received 34 snippets
+[INFO] Progress for topic 'Sports score live updating': 34/40
+[INFO] Requesting 6 snippets for topic 'Sports score live updating'...
+[INFO] Received 6 snippets
+[INFO] Progress for topic 'Sports score live updating': 40/40
+[INFO] Completed topic 'Sports score live updating' for category throws: Generated 40 new snippets
+[INFO] Generating snippets for topic 'Car rental fleet management' (42/42), need 40 more
+[INFO] Requesting 20 snippets for topic 'Car rental fleet management'...
+[INFO] Received 20 snippets
+[INFO] Progress for topic 'Car rental fleet management': 20/40
+[INFO] Requesting 20 snippets for topic 'Car rental fleet management'...
+[INFO] Received 20 snippets
+[INFO] Progress for topic 'Car rental fleet management': 40/40
+[INFO] Completed topic 'Car rental fleet management' for category throws: Generated 40 new snippets
+[INFO] Completed category throws: Generated 1665 total new snippets across all topics
+[INFO] 
+--- Generating snippets for category: classes_for_data ---
+[INFO] Topic 'E-commerce checkout' already has 40 snippets for category classes_for_data. Skipping.
+[INFO] Topic 'Mobile banking app' already has 40 snippets for category classes_for_data. Skipping.
+[INFO] Topic 'Telemedicine appointment scheduling' already has 40 snippets for category classes_for_data. Skipping.
+[INFO] Topic 'Fitness tracker analytics' already has 40 snippets for category classes_for_data. Skipping.
+[INFO] Topic 'Wix backend service for managing Pricing Plans' already has 40 snippets for category classes_for_data. Skipping.
+[INFO] Topic 'Smart home device control' already has 40 snippets for category classes_for_data. Skipping.
+[INFO] Topic 'Ride-sharing dispatch' already has 40 snippets for category classes_for_data. Skipping.
+[INFO] Topic 'Airline ticketing system' already has 40 snippets for category classes_for_data. Skipping.
+[INFO] Topic 'Hotel reservation engine' already has 40 snippets for category classes_for_data. Skipping.
+[INFO] Topic 'Food delivery logistics' already has 40 snippets for category classes_for_data. Skipping.
+[INFO] Topic 'Digital music streaming' already has 40 snippets for category classes_for_data. Skipping.
+[INFO] Topic 'Online tutoring platform' already has 40 snippets for category classes_for_data. Skipping.
+[INFO] Topic 'Real-estate listing search' already has 40 snippets for category classes_for_data. Skipping.
+[INFO] Topic 'Cryptocurrency wallet management' already has 40 snippets for category classes_for_data. Skipping.
+[INFO] Topic 'Warehouse inventory tracking' already has 40 snippets for category classes_for_data. Skipping.
+[INFO] Topic 'Social media content moderation' already has 40 snippets for category classes_for_data. Skipping.
+[INFO] Topic 'Personalized news feed' already has 40 snippets for category classes_for_data. Skipping.
+[INFO] Topic 'Electric vehicle charging station locator' already has 40 snippets for category classes_for_data. Skipping.
+[INFO] Generating snippets for topic 'Agricultural crop monitoring' (19/42), need 40 more
+[INFO] Requesting 20 snippets for topic 'Agricultural crop monitoring'...
+[INFO] Received 20 snippets
+[INFO] Progress for topic 'Agricultural crop monitoring': 20/40
+[INFO] Requesting 20 snippets for topic 'Agricultural crop monitoring'...
+[INFO] Received 20 snippets
+[INFO] Progress for topic 'Agricultural crop monitoring': 40/40
+[INFO] Completed topic 'Agricultural crop monitoring' for category classes_for_data: Generated 40 new snippets
+[INFO] Generating snippets for topic 'IoT sensor data aggregation' (20/42), need 40 more
+[INFO] Requesting 20 snippets for topic 'IoT sensor data aggregation'...
+[INFO] Received 20 snippets
+[INFO] Progress for topic 'IoT sensor data aggregation': 20/40
+[INFO] Requesting 20 snippets for topic 'IoT sensor data aggregation'...
+[INFO] Received 20 snippets
+[INFO] Progress for topic 'IoT sensor data aggregation': 40/40
+[INFO] Completed topic 'IoT sensor data aggregation' for category classes_for_data: Generated 40 new snippets
+[INFO] Generating snippets for topic 'Public transit route planning' (21/42), need 40 more
+[INFO] Requesting 20 snippets for topic 'Public transit route planning'...
+[INFO] Received 20 snippets
+[INFO] Progress for topic 'Public transit route planning': 20/40
+[INFO] Requesting 20 snippets for topic 'Public transit route planning'...
+[INFO] Received 20 snippets
+[INFO] Progress for topic 'Public transit route planning': 40/40
+[INFO] Completed topic 'Public transit route planning' for category classes_for_data: Generated 40 new snippets
+[INFO] Generating snippets for topic 'Retail point-of-sale integration' (22/42), need 40 more
+[INFO] Requesting 20 snippets for topic 'Retail point-of-sale integration'...
+[INFO] Received 20 snippets
+[INFO] Progress for topic 'Retail point-of-sale integration': 20/40
+[INFO] Requesting 20 snippets for topic 'Retail point-of-sale integration'...
+[INFO] Received 20 snippets
+[INFO] Progress for topic 'Retail point-of-sale integration': 40/40
+[INFO] Completed topic 'Retail point-of-sale integration' for category classes_for_data: Generated 40 new snippets
+[INFO] Generating snippets for topic 'Online mortgage calculator' (23/42), need 40 more
+[INFO] Requesting 20 snippets for topic 'Online mortgage calculator'...
+[INFO] Received 19 snippets
+[INFO] Progress for topic 'Online mortgage calculator': 19/40
+[INFO] Requesting 20 snippets for topic 'Online mortgage calculator'...
+[INFO] Received 20 snippets
+[INFO] Progress for topic 'Online mortgage calculator': 39/40
+[INFO] Requesting 1 snippets for topic 'Online mortgage calculator'...
+[INFO] Received 1 snippets
+[INFO] Progress for topic 'Online mortgage calculator': 40/40
+[INFO] Completed topic 'Online mortgage calculator' for category classes_for_data: Generated 40 new snippets
+[INFO] Generating snippets for topic 'Telemetry for industrial machinery' (24/42), need 40 more
+[INFO] Requesting 20 snippets for topic 'Telemetry for industrial machinery'...
+[INFO] Received 20 snippets
+[INFO] Progress for topic 'Telemetry for industrial machinery': 20/40
+[INFO] Requesting 20 snippets for topic 'Telemetry for industrial machinery'...
+[INFO] Received 20 snippets
+[INFO] Progress for topic 'Telemetry for industrial machinery': 40/40
+[INFO] Completed topic 'Telemetry for industrial machinery' for category classes_for_data: Generated 40 new snippets
+[INFO] Generating snippets for topic 'Virtual reality gaming lobby' (25/42), need 40 more
+[INFO] Requesting 20 snippets for topic 'Virtual reality gaming lobby'...
+[INFO] Received 20 snippets
+[INFO] Progress for topic 'Virtual reality gaming lobby': 20/40
+[INFO] Requesting 20 snippets for topic 'Virtual reality gaming lobby'...
+[INFO] Received 20 snippets
+[INFO] Progress for topic 'Virtual reality gaming lobby': 40/40
+[INFO] Completed topic 'Virtual reality gaming lobby' for category classes_for_data: Generated 40 new snippets
+[INFO] Generating snippets for topic 'Employee time tracking' (26/42), need 40 more
+[INFO] Requesting 20 snippets for topic 'Employee time tracking'...
+[INFO] Received 20 snippets
+[INFO] Progress for topic 'Employee time tracking': 20/40
+[INFO] Requesting 20 snippets for topic 'Employee time tracking'...
+[INFO] Received 20 snippets
+[INFO] Progress for topic 'Employee time tracking': 40/40
+[INFO] Completed topic 'Employee time tracking' for category classes_for_data: Generated 40 new snippets
+[INFO] Generating snippets for topic 'Weather alert notification service' (27/42), need 40 more
+[INFO] Requesting 20 snippets for topic 'Weather alert notification service'...
+[INFO] Received 20 snippets
+[INFO] Progress for topic 'Weather alert notification service': 20/40
+[INFO] Requesting 20 snippets for topic 'Weather alert notification service'...
+[INFO] Received 20 snippets
+[INFO] Progress for topic 'Weather alert notification service': 40/40
+[INFO] Completed topic 'Weather alert notification service' for category classes_for_data: Generated 40 new snippets
+[INFO] Generating snippets for topic 'Fraud detection in payments' (28/42), need 40 more
+[INFO] Requesting 20 snippets for topic 'Fraud detection in payments'...
+[INFO] Received 20 snippets
+[INFO] Progress for topic 'Fraud detection in payments': 20/40
+[INFO] Requesting 20 snippets for topic 'Fraud detection in payments'...
+[INFO] Received 21 snippets
+[INFO] Progress for topic 'Fraud detection in payments': 41/40
+[INFO] Completed topic 'Fraud detection in payments' for category classes_for_data: Generated 41 new snippets
+[INFO] Generating snippets for topic 'Medical imaging data viewer' (29/42), need 40 more
+[INFO] Requesting 20 snippets for topic 'Medical imaging data viewer'...
+[INFO] Received 20 snippets
+[INFO] Progress for topic 'Medical imaging data viewer': 20/40
+[INFO] Requesting 20 snippets for topic 'Medical imaging data viewer'...
+[INFO] Received 19 snippets
+[INFO] Progress for topic 'Medical imaging data viewer': 39/40
+[INFO] Requesting 1 snippets for topic 'Medical imaging data viewer'...
+[INFO] Received 1 snippets
+[INFO] Progress for topic 'Medical imaging data viewer': 40/40
+[INFO] Completed topic 'Medical imaging data viewer' for category classes_for_data: Generated 40 new snippets
+[INFO] Generating snippets for topic 'Wix backend service for managing Payment Links' (30/42), need 40 more
+[INFO] Requesting 20 snippets for topic 'Wix backend service for managing Payment Links'...
+[INFO] Received 21 snippets
+[INFO] Progress for topic 'Wix backend service for managing Payment Links': 21/40
+[INFO] Requesting 19 snippets for topic 'Wix backend service for managing Payment Links'...
+[INFO] Received 19 snippets
+[INFO] Progress for topic 'Wix backend service for managing Payment Links': 40/40
+[INFO] Completed topic 'Wix backend service for managing Payment Links' for category classes_for_data: Generated 40 new snippets
+[INFO] Generating snippets for topic 'Language translation chat bot' (31/42), need 40 more
+[INFO] Requesting 20 snippets for topic 'Language translation chat bot'...
+[INFO] Received 20 snippets
+[INFO] Progress for topic 'Language translation chat bot': 20/40
+[INFO] Requesting 20 snippets for topic 'Language translation chat bot'...
+[INFO] Received 20 snippets
+[INFO] Progress for topic 'Language translation chat bot': 40/40
+[INFO] Completed topic 'Language translation chat bot' for category classes_for_data: Generated 40 new snippets
+[INFO] Generating snippets for topic 'Energy consumption dashboard' (32/42), need 40 more
+[INFO] Requesting 20 snippets for topic 'Energy consumption dashboard'...
+[INFO] Received 20 snippets
+[INFO] Progress for topic 'Energy consumption dashboard': 20/40
+[INFO] Requesting 20 snippets for topic 'Energy consumption dashboard'...
+[INFO] Received 20 snippets
+[INFO] Progress for topic 'Energy consumption dashboard': 40/40
+[INFO] Completed topic 'Energy consumption dashboard' for category classes_for_data: Generated 40 new snippets
+[INFO] Generating snippets for topic 'Electronic voting tallying' (33/42), need 40 more
+[INFO] Requesting 20 snippets for topic 'Electronic voting tallying'...
+[INFO] Received 20 snippets
+[INFO] Progress for topic 'Electronic voting tallying': 20/40
+[INFO] Requesting 20 snippets for topic 'Electronic voting tallying'...
+[INFO] Received 20 snippets
+[INFO] Progress for topic 'Electronic voting tallying': 40/40
+[INFO] Completed topic 'Electronic voting tallying' for category classes_for_data: Generated 40 new snippets
+[INFO] Generating snippets for topic 'Digital library catalog search' (34/42), need 40 more
+[INFO] Requesting 20 snippets for topic 'Digital library catalog search'...
+[INFO] Received 20 snippets
+[INFO] Progress for topic 'Digital library catalog search': 20/40
+[INFO] Requesting 20 snippets for topic 'Digital library catalog search'...
+[INFO] Received 20 snippets
+[INFO] Progress for topic 'Digital library catalog search': 40/40
+[INFO] Completed topic 'Digital library catalog search' for category classes_for_data: Generated 40 new snippets
+[INFO] Generating snippets for topic 'Event ticket QR validation' (35/42), need 40 more
+[INFO] Requesting 20 snippets for topic 'Event ticket QR validation'...
+[INFO] Received 20 snippets
+[INFO] Progress for topic 'Event ticket QR validation': 20/40
+[INFO] Requesting 20 snippets for topic 'Event ticket QR validation'...
+[INFO] Received 20 snippets
+[INFO] Progress for topic 'Event ticket QR validation': 40/40
+[INFO] Completed topic 'Event ticket QR validation' for category classes_for_data: Generated 40 new snippets
+[INFO] Generating snippets for topic 'Drone delivery path optimization' (36/42), need 40 more
+[INFO] Requesting 20 snippets for topic 'Drone delivery path optimization'...
+[INFO] Received 20 snippets
+[INFO] Progress for topic 'Drone delivery path optimization': 20/40
+[INFO] Requesting 20 snippets for topic 'Drone delivery path optimization'...
+[INFO] Received 20 snippets
+[INFO] Progress for topic 'Drone delivery path optimization': 40/40
+[INFO] Completed topic 'Drone delivery path optimization' for category classes_for_data: Generated 40 new snippets
+[INFO] Generating snippets for topic 'Insurance claim submission portal' (37/42), need 40 more
+[INFO] Requesting 20 snippets for topic 'Insurance claim submission portal'...
+[INFO] Received 20 snippets
+[INFO] Progress for topic 'Insurance claim submission portal': 20/40
+[INFO] Requesting 20 snippets for topic 'Insurance claim submission portal'...
+[INFO] Received 20 snippets
+[INFO] Progress for topic 'Insurance claim submission portal': 40/40
+[INFO] Completed topic 'Insurance claim submission portal' for category classes_for_data: Generated 40 new snippets
+[INFO] Generating snippets for topic 'Education learning analytics' (38/42), need 40 more
+[INFO] Requesting 20 snippets for topic 'Education learning analytics'...
+[INFO] Received 20 snippets
+[INFO] Progress for topic 'Education learning analytics': 20/40
+[INFO] Requesting 20 snippets for topic 'Education learning analytics'...
+[INFO] Received 20 snippets
+[INFO] Progress for topic 'Education learning analytics': 40/40
+[INFO] Completed topic 'Education learning analytics' for category classes_for_data: Generated 40 new snippets
+[INFO] Generating snippets for topic 'Personalized recipe recommender' (39/42), need 40 more
+[INFO] Requesting 20 snippets for topic 'Personalized recipe recommender'...
+[INFO] Received 20 snippets
+[INFO] Progress for topic 'Personalized recipe recommender': 20/40
+[INFO] Requesting 20 snippets for topic 'Personalized recipe recommender'...
+[INFO] Received 20 snippets
+[INFO] Progress for topic 'Personalized recipe recommender': 40/40
+[INFO] Completed topic 'Personalized recipe recommender' for category classes_for_data: Generated 40 new snippets
+[INFO] Generating snippets for topic 'Charity donation platform' (40/42), need 40 more
+[INFO] Requesting 20 snippets for topic 'Charity donation platform'...
+[INFO] Received 22 snippets
+[INFO] Progress for topic 'Charity donation platform': 22/40
+[INFO] Requesting 18 snippets for topic 'Charity donation platform'...
+[INFO] Received 18 snippets
+[INFO] Progress for topic 'Charity donation platform': 40/40
+[INFO] Completed topic 'Charity donation platform' for category classes_for_data: Generated 40 new snippets
+[INFO] Generating snippets for topic 'Sports score live updating' (41/42), need 40 more
+[INFO] Requesting 20 snippets for topic 'Sports score live updating'...
+[INFO] Received 20 snippets
+[INFO] Progress for topic 'Sports score live updating': 20/40
+[INFO] Requesting 20 snippets for topic 'Sports score live updating'...
+[INFO] Received 20 snippets
+[INFO] Progress for topic 'Sports score live updating': 40/40
+[INFO] Completed topic 'Sports score live updating' for category classes_for_data: Generated 40 new snippets
+[INFO] Generating snippets for topic 'Car rental fleet management' (42/42), need 40 more
+[INFO] Requesting 20 snippets for topic 'Car rental fleet management'...
+[INFO] Received 20 snippets
+[INFO] Progress for topic 'Car rental fleet management': 20/40
+[INFO] Requesting 20 snippets for topic 'Car rental fleet management'...
+[INFO] Received 20 snippets
+[INFO] Progress for topic 'Car rental fleet management': 40/40
+[INFO] Completed topic 'Car rental fleet management' for category classes_for_data: Generated 40 new snippets
+[INFO] Completed category classes_for_data: Generated 1681 total new snippets across all topics
+[INFO] === Dataset generation complete. Total snippets: 5117 ===

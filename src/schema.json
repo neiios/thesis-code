@@ -1,0 +1,25 @@
+{
+  "type": "object",
+  "properties": {
+    "snippets": {
+      "type": "array",
+      "items": {
+        "type": "object",
+        "properties": {
+          "codeSnippet": {
+            "description": "The raw Scala 3 code snippet text.",
+            "type": "string"
+          },
+          "isIdiomatic": {
+            "description": "Boolean flag indicating whether the code follows idiomatic Scala practices.",
+            "type": "boolean"
+          }
+        },
+        "required": ["codeSnippet", "isIdiomatic"],
+        "additionalProperties": false
+      }
+    }
+  },
+  "required": ["snippets"],
+  "additionalProperties": false
+}

@@ -1,0 +1,436 @@
+[INFO] Loaded schema from ./src/schema.json
+[INFO] Loaded 42 topics from ./src/topics.json
+[INFO] Planning to generate up to 5040 snippets (3 categories x 42 topics x 40 snippets per topic)
+[INFO] 
+--- Generating snippets for category: null_checks ---
+[INFO] Generating snippets for topic 'E-commerce checkout' (1/42), need 40 more
+[INFO] Requesting 20 snippets for topic 'E-commerce checkout'...
+[INFO] Received 20 snippets
+[INFO] Progress for topic 'E-commerce checkout': 20/40
+[INFO] Requesting 20 snippets for topic 'E-commerce checkout'...
+[INFO] Received 21 snippets
+[INFO] Progress for topic 'E-commerce checkout': 41/40
+[INFO] Completed topic 'E-commerce checkout' for category null_checks: Generated 41 new snippets
+[INFO] Generating snippets for topic 'Mobile banking app' (2/42), need 40 more
+[INFO] Requesting 20 snippets for topic 'Mobile banking app'...
+[INFO] Received 20 snippets
+[INFO] Progress for topic 'Mobile banking app': 20/40
+[INFO] Requesting 20 snippets for topic 'Mobile banking app'...
+[INFO] Received 20 snippets
+[INFO] Progress for topic 'Mobile banking app': 40/40
+[INFO] Completed topic 'Mobile banking app' for category null_checks: Generated 40 new snippets
+[INFO] Generating snippets for topic 'Telemedicine appointment scheduling' (3/42), need 40 more
+[INFO] Requesting 20 snippets for topic 'Telemedicine appointment scheduling'...
+[INFO] Received 20 snippets
+[INFO] Progress for topic 'Telemedicine appointment scheduling': 20/40
+[INFO] Requesting 20 snippets for topic 'Telemedicine appointment scheduling'...
+[INFO] Received 20 snippets
+[INFO] Progress for topic 'Telemedicine appointment scheduling': 40/40
+[INFO] Completed topic 'Telemedicine appointment scheduling' for category null_checks: Generated 40 new snippets
+[INFO] Generating snippets for topic 'Fitness tracker analytics' (4/42), need 40 more
+[INFO] Requesting 20 snippets for topic 'Fitness tracker analytics'...
+[INFO] Received 20 snippets
+[INFO] Progress for topic 'Fitness tracker analytics': 20/40
+[INFO] Requesting 20 snippets for topic 'Fitness tracker analytics'...
+[INFO] Received 21 snippets
+[INFO] Progress for topic 'Fitness tracker analytics': 41/40
+[INFO] Completed topic 'Fitness tracker analytics' for category null_checks: Generated 41 new snippets
+[INFO] Generating snippets for topic 'Wix backend service for managing Pricing Plans' (5/42), need 40 more
+[INFO] Requesting 20 snippets for topic 'Wix backend service for managing Pricing Plans'...
+[INFO] Received 20 snippets
+[INFO] Progress for topic 'Wix backend service for managing Pricing Plans': 20/40
+[INFO] Requesting 20 snippets for topic 'Wix backend service for managing Pricing Plans'...
+[INFO] Received 20 snippets
+[INFO] Progress for topic 'Wix backend service for managing Pricing Plans': 40/40
+[INFO] Completed topic 'Wix backend service for managing Pricing Plans' for category null_checks: Generated 40 new snippets
+[INFO] Generating snippets for topic 'Smart home device control' (6/42), need 40 more
+[INFO] Requesting 20 snippets for topic 'Smart home device control'...
+[INFO] Received 20 snippets
+[INFO] Progress for topic 'Smart home device control': 20/40
+[INFO] Requesting 20 snippets for topic 'Smart home device control'...
+[INFO] Received 20 snippets
+[INFO] Progress for topic 'Smart home device control': 40/40
+[INFO] Completed topic 'Smart home device control' for category null_checks: Generated 40 new snippets
+[INFO] Generating snippets for topic 'Ride-sharing dispatch' (7/42), need 40 more
+[INFO] Requesting 20 snippets for topic 'Ride-sharing dispatch'...
+[INFO] Received 20 snippets
+[INFO] Progress for topic 'Ride-sharing dispatch': 20/40
+[INFO] Requesting 20 snippets for topic 'Ride-sharing dispatch'...
+[INFO] Received 34 snippets
+[INFO] Progress for topic 'Ride-sharing dispatch': 54/40
+[INFO] Completed topic 'Ride-sharing dispatch' for category null_checks: Generated 54 new snippets
+[INFO] Generating snippets for topic 'Airline ticketing system' (8/42), need 40 more
+[INFO] Requesting 20 snippets for topic 'Airline ticketing system'...
+[INFO] Received 20 snippets
+[INFO] Progress for topic 'Airline ticketing system': 20/40
+[INFO] Requesting 20 snippets for topic 'Airline ticketing system'...
+[INFO] Received 20 snippets
+[INFO] Progress for topic 'Airline ticketing system': 40/40
+[INFO] Completed topic 'Airline ticketing system' for category null_checks: Generated 40 new snippets
+[INFO] Generating snippets for topic 'Hotel reservation engine' (9/42), need 40 more
+[INFO] Requesting 20 snippets for topic 'Hotel reservation engine'...
+[INFO] Received 20 snippets
+[INFO] Progress for topic 'Hotel reservation engine': 20/40
+[INFO] Requesting 20 snippets for topic 'Hotel reservation engine'...
+[INFO] Received 20 snippets
+[INFO] Progress for topic 'Hotel reservation engine': 40/40
+[INFO] Completed topic 'Hotel reservation engine' for category null_checks: Generated 40 new snippets
+[INFO] Generating snippets for topic 'Food delivery logistics' (10/42), need 40 more
+[INFO] Requesting 20 snippets for topic 'Food delivery logistics'...
+[INFO] Received 20 snippets
+[INFO] Progress for topic 'Food delivery logistics': 20/40
+[INFO] Requesting 20 snippets for topic 'Food delivery logistics'...
+[INFO] Received 20 snippets
+[INFO] Progress for topic 'Food delivery logistics': 40/40
+[INFO] Completed topic 'Food delivery logistics' for category null_checks: Generated 40 new snippets
+[INFO] Generating snippets for topic 'Digital music streaming' (11/42), need 40 more
+[INFO] Requesting 20 snippets for topic 'Digital music streaming'...
+[INFO] Received 20 snippets
+[INFO] Progress for topic 'Digital music streaming': 20/40
+[INFO] Requesting 20 snippets for topic 'Digital music streaming'...
+[INFO] Received 20 snippets
+[INFO] Progress for topic 'Digital music streaming': 40/40
+[INFO] Completed topic 'Digital music streaming' for category null_checks: Generated 40 new snippets
+[INFO] Generating snippets for topic 'Online tutoring platform' (12/42), need 40 more
+[INFO] Requesting 20 snippets for topic 'Online tutoring platform'...
+[INFO] Received 20 snippets
+[INFO] Progress for topic 'Online tutoring platform': 20/40
+[INFO] Requesting 20 snippets for topic 'Online tutoring platform'...
+[INFO] Received 20 snippets
+[INFO] Progress for topic 'Online tutoring platform': 40/40
+[INFO] Completed topic 'Online tutoring platform' for category null_checks: Generated 40 new snippets
+[INFO] Generating snippets for topic 'Real-estate listing search' (13/42), need 40 more
+[INFO] Requesting 20 snippets for topic 'Real-estate listing search'...
+[INFO] Received 20 snippets
+[INFO] Progress for topic 'Real-estate listing search': 20/40
+[INFO] Requesting 20 snippets for topic 'Real-estate listing search'...
+[INFO] Received 20 snippets
+[INFO] Progress for topic 'Real-estate listing search': 40/40
+[INFO] Completed topic 'Real-estate listing search' for category null_checks: Generated 40 new snippets
+[INFO] Generating snippets for topic 'Cryptocurrency wallet management' (14/42), need 40 more
+[INFO] Requesting 20 snippets for topic 'Cryptocurrency wallet management'...
+[INFO] Received 20 snippets
+[INFO] Progress for topic 'Cryptocurrency wallet management': 20/40
+[INFO] Requesting 20 snippets for topic 'Cryptocurrency wallet management'...
+[INFO] Received 20 snippets
+[INFO] Progress for topic 'Cryptocurrency wallet management': 40/40
+[INFO] Completed topic 'Cryptocurrency wallet management' for category null_checks: Generated 40 new snippets
+[INFO] Generating snippets for topic 'Warehouse inventory tracking' (15/42), need 40 more
+[INFO] Requesting 20 snippets for topic 'Warehouse inventory tracking'...
+[INFO] Received 20 snippets
+[INFO] Progress for topic 'Warehouse inventory tracking': 20/40
+[INFO] Requesting 20 snippets for topic 'Warehouse inventory tracking'...
+[INFO] Received 20 snippets
+[INFO] Progress for topic 'Warehouse inventory tracking': 40/40
+[INFO] Completed topic 'Warehouse inventory tracking' for category null_checks: Generated 40 new snippets
+[INFO] Generating snippets for topic 'Social media content moderation' (16/42), need 40 more
+[INFO] Requesting 20 snippets for topic 'Social media content moderation'...
+[INFO] Received 20 snippets
+[INFO] Progress for topic 'Social media content moderation': 20/40
+[INFO] Requesting 20 snippets for topic 'Social media content moderation'...
+[INFO] Received 20 snippets
+[INFO] Progress for topic 'Social media content moderation': 40/40
+[INFO] Completed topic 'Social media content moderation' for category null_checks: Generated 40 new snippets
+[INFO] Generating snippets for topic 'Personalized news feed' (17/42), need 40 more
+[INFO] Requesting 20 snippets for topic 'Personalized news feed'...
+[INFO] Received 20 snippets
+[INFO] Progress for topic 'Personalized news feed': 20/40
+[INFO] Requesting 20 snippets for topic 'Personalized news feed'...
+[INFO] Received 34 snippets
+[INFO] Progress for topic 'Personalized news feed': 54/40
+[INFO] Completed topic 'Personalized news feed' for category null_checks: Generated 54 new snippets
+[INFO] Generating snippets for topic 'Electric vehicle charging station locator' (18/42), need 40 more
+[INFO] Requesting 20 snippets for topic 'Electric vehicle charging station locator'...
+[INFO] Received 32 snippets
+[INFO] Progress for topic 'Electric vehicle charging station locator': 32/40
+[INFO] Requesting 8 snippets for topic 'Electric vehicle charging station locator'...
+[INFO] Received 8 snippets
+[INFO] Progress for topic 'Electric vehicle charging station locator': 40/40
+[INFO] Completed topic 'Electric vehicle charging station locator' for category null_checks: Generated 40 new snippets
+[INFO] Generating snippets for topic 'Agricultural crop monitoring' (19/42), need 40 more
+[INFO] Requesting 20 snippets for topic 'Agricultural crop monitoring'...
+[INFO] Received 20 snippets
+[INFO] Progress for topic 'Agricultural crop monitoring': 20/40
+[INFO] Requesting 20 snippets for topic 'Agricultural crop monitoring'...
+[INFO] Received 20 snippets
+[INFO] Progress for topic 'Agricultural crop monitoring': 40/40
+[INFO] Completed topic 'Agricultural crop monitoring' for category null_checks: Generated 40 new snippets
+[INFO] Generating snippets for topic 'IoT sensor data aggregation' (20/42), need 40 more
+[INFO] Requesting 20 snippets for topic 'IoT sensor data aggregation'...
+[INFO] Received 20 snippets
+[INFO] Progress for topic 'IoT sensor data aggregation': 20/40
+[INFO] Requesting 20 snippets for topic 'IoT sensor data aggregation'...
+[INFO] Received 20 snippets
+[INFO] Progress for topic 'IoT sensor data aggregation': 40/40
+[INFO] Completed topic 'IoT sensor data aggregation' for category null_checks: Generated 40 new snippets
+[INFO] Generating snippets for topic 'Public transit route planning' (21/42), need 40 more
+[INFO] Requesting 20 snippets for topic 'Public transit route planning'...
+[INFO] Received 20 snippets
+[INFO] Progress for topic 'Public transit route planning': 20/40
+[INFO] Requesting 20 snippets for topic 'Public transit route planning'...
+[INFO] Received 20 snippets
+[INFO] Progress for topic 'Public transit route planning': 40/40
+[INFO] Completed topic 'Public transit route planning' for category null_checks: Generated 40 new snippets
+[INFO] Generating snippets for topic 'Retail point-of-sale integration' (22/42), need 40 more
+[INFO] Requesting 20 snippets for topic 'Retail point-of-sale integration'...
+[INFO] Received 21 snippets
+[INFO] Progress for topic 'Retail point-of-sale integration': 21/40
+[INFO] Requesting 19 snippets for topic 'Retail point-of-sale integration'...
+[INFO] Received 19 snippets
+[INFO] Progress for topic 'Retail point-of-sale integration': 40/40
+[INFO] Completed topic 'Retail point-of-sale integration' for category null_checks: Generated 40 new snippets
+[INFO] Generating snippets for topic 'Online mortgage calculator' (23/42), need 40 more
+[INFO] Requesting 20 snippets for topic 'Online mortgage calculator'...
+[INFO] Received 33 snippets
+[INFO] Progress for topic 'Online mortgage calculator': 33/40
+[INFO] Requesting 7 snippets for topic 'Online mortgage calculator'...
+[INFO] Received 7 snippets
+[INFO] Progress for topic 'Online mortgage calculator': 40/40
+[INFO] Completed topic 'Online mortgage calculator' for category null_checks: Generated 40 new snippets
+[INFO] Generating snippets for topic 'Telemetry for industrial machinery' (24/42), need 40 more
+[INFO] Requesting 20 snippets for topic 'Telemetry for industrial machinery'...
+[INFO] Received 20 snippets
+[INFO] Progress for topic 'Telemetry for industrial machinery': 20/40
+[INFO] Requesting 20 snippets for topic 'Telemetry for industrial machinery'...
+[INFO] Received 20 snippets
+[INFO] Progress for topic 'Telemetry for industrial machinery': 40/40
+[INFO] Completed topic 'Telemetry for industrial machinery' for category null_checks: Generated 40 new snippets
+[INFO] Generating snippets for topic 'Virtual reality gaming lobby' (25/42), need 40 more
+[INFO] Requesting 20 snippets for topic 'Virtual reality gaming lobby'...
+[INFO] Received 20 snippets
+[INFO] Progress for topic 'Virtual reality gaming lobby': 20/40
+[INFO] Requesting 20 snippets for topic 'Virtual reality gaming lobby'...
+[INFO] Received 20 snippets
+[INFO] Progress for topic 'Virtual reality gaming lobby': 40/40
+[INFO] Completed topic 'Virtual reality gaming lobby' for category null_checks: Generated 40 new snippets
+[INFO] Generating snippets for topic 'Employee time tracking' (26/42), need 40 more
+[INFO] Requesting 20 snippets for topic 'Employee time tracking'...
+[INFO] Received 20 snippets
+[INFO] Progress for topic 'Employee time tracking': 20/40
+[INFO] Requesting 20 snippets for topic 'Employee time tracking'...
+[INFO] Received 21 snippets
+[INFO] Progress for topic 'Employee time tracking': 41/40
+[INFO] Completed topic 'Employee time tracking' for category null_checks: Generated 41 new snippets
+[INFO] Generating snippets for topic 'Weather alert notification service' (27/42), need 40 more
+[INFO] Requesting 20 snippets for topic 'Weather alert notification service'...
+[INFO] Received 20 snippets
+[INFO] Progress for topic 'Weather alert notification service': 20/40
+[INFO] Requesting 20 snippets for topic 'Weather alert notification service'...
+[INFO] Received 20 snippets
+[INFO] Progress for topic 'Weather alert notification service': 40/40
+[INFO] Completed topic 'Weather alert notification service' for category null_checks: Generated 40 new snippets
+[INFO] Generating snippets for topic 'Fraud detection in payments' (28/42), need 40 more
+[INFO] Requesting 20 snippets for topic 'Fraud detection in payments'...
+[INFO] Received 20 snippets
+[INFO] Progress for topic 'Fraud detection in payments': 20/40
+[INFO] Requesting 20 snippets for topic 'Fraud detection in payments'...
+[INFO] Received 20 snippets
+[INFO] Progress for topic 'Fraud detection in payments': 40/40
+[INFO] Completed topic 'Fraud detection in payments' for category null_checks: Generated 40 new snippets
+[INFO] Generating snippets for topic 'Medical imaging data viewer' (29/42), need 40 more
+[INFO] Requesting 20 snippets for topic 'Medical imaging data viewer'...
+[INFO] Received 20 snippets
+[INFO] Progress for topic 'Medical imaging data viewer': 20/40
+[INFO] Requesting 20 snippets for topic 'Medical imaging data viewer'...
+[INFO] Received 32 snippets
+[INFO] Progress for topic 'Medical imaging data viewer': 52/40
+[INFO] Completed topic 'Medical imaging data viewer' for category null_checks: Generated 52 new snippets
+[INFO] Generating snippets for topic 'Wix backend service for managing Payment Links' (30/42), need 40 more
+[INFO] Requesting 20 snippets for topic 'Wix backend service for managing Payment Links'...
+[INFO] Received 20 snippets
+[INFO] Progress for topic 'Wix backend service for managing Payment Links': 20/40
+[INFO] Requesting 20 snippets for topic 'Wix backend service for managing Payment Links'...
+[INFO] Received 35 snippets
+[INFO] Progress for topic 'Wix backend service for managing Payment Links': 55/40
+[INFO] Completed topic 'Wix backend service for managing Payment Links' for category null_checks: Generated 55 new snippets
+[INFO] Generating snippets for topic 'Language translation chat bot' (31/42), need 40 more
+[INFO] Requesting 20 snippets for topic 'Language translation chat bot'...
+[INFO] Received 20 snippets
+[INFO] Progress for topic 'Language translation chat bot': 20/40
+[INFO] Requesting 20 snippets for topic 'Language translation chat bot'...
+[INFO] Received 20 snippets
+[INFO] Progress for topic 'Language translation chat bot': 40/40
+[INFO] Completed topic 'Language translation chat bot' for category null_checks: Generated 40 new snippets
+[INFO] Generating snippets for topic 'Energy consumption dashboard' (32/42), need 40 more
+[INFO] Requesting 20 snippets for topic 'Energy consumption dashboard'...
+[INFO] Received 21 snippets
+[INFO] Progress for topic 'Energy consumption dashboard': 21/40
+[INFO] Requesting 19 snippets for topic 'Energy consumption dashboard'...
+[INFO] Received 19 snippets
+[INFO] Progress for topic 'Energy consumption dashboard': 40/40
+[INFO] Completed topic 'Energy consumption dashboard' for category null_checks: Generated 40 new snippets
+[INFO] Generating snippets for topic 'Electronic voting tallying' (33/42), need 40 more
+[INFO] Requesting 20 snippets for topic 'Electronic voting tallying'...
+[INFO] Received 20 snippets
+[INFO] Progress for topic 'Electronic voting tallying': 20/40
+[INFO] Requesting 20 snippets for topic 'Electronic voting tallying'...
+[INFO] Received 39 snippets
+[INFO] Progress for topic 'Electronic voting tallying': 59/40
+[INFO] Completed topic 'Electronic voting tallying' for category null_checks: Generated 59 new snippets
+[INFO] Generating snippets for topic 'Digital library catalog search' (34/42), need 40 more
+[INFO] Requesting 20 snippets for topic 'Digital library catalog search'...
+[INFO] Received 20 snippets
+[INFO] Progress for topic 'Digital library catalog search': 20/40
+[INFO] Requesting 20 snippets for topic 'Digital library catalog search'...
+[INFO] Received 20 snippets
+[INFO] Progress for topic 'Digital library catalog search': 40/40
+[INFO] Completed topic 'Digital library catalog search' for category null_checks: Generated 40 new snippets
+[INFO] Generating snippets for topic 'Event ticket QR validation' (35/42), need 40 more
+[INFO] Requesting 20 snippets for topic 'Event ticket QR validation'...
+[INFO] Received 20 snippets
+[INFO] Progress for topic 'Event ticket QR validation': 20/40
+[INFO] Requesting 20 snippets for topic 'Event ticket QR validation'...
+[INFO] Received 20 snippets
+[INFO] Progress for topic 'Event ticket QR validation': 40/40
+[INFO] Completed topic 'Event ticket QR validation' for category null_checks: Generated 40 new snippets
+[INFO] Generating snippets for topic 'Drone delivery path optimization' (36/42), need 40 more
+[INFO] Requesting 20 snippets for topic 'Drone delivery path optimization'...
+[INFO] Received 20 snippets
+[INFO] Progress for topic 'Drone delivery path optimization': 20/40
+[INFO] Requesting 20 snippets for topic 'Drone delivery path optimization'...
+[INFO] Received 34 snippets
+[INFO] Progress for topic 'Drone delivery path optimization': 54/40
+[INFO] Completed topic 'Drone delivery path optimization' for category null_checks: Generated 54 new snippets
+[INFO] Generating snippets for topic 'Insurance claim submission portal' (37/42), need 40 more
+[INFO] Requesting 20 snippets for topic 'Insurance claim submission portal'...
+[INFO] Received 20 snippets
+[INFO] Progress for topic 'Insurance claim submission portal': 20/40
+[INFO] Requesting 20 snippets for topic 'Insurance claim submission portal'...
+[INFO] Received 20 snippets
+[INFO] Progress for topic 'Insurance claim submission portal': 40/40
+[INFO] Completed topic 'Insurance claim submission portal' for category null_checks: Generated 40 new snippets
+[INFO] Generating snippets for topic 'Education learning analytics' (38/42), need 40 more
+[INFO] Requesting 20 snippets for topic 'Education learning analytics'...
+[INFO] Received 21 snippets
+[INFO] Progress for topic 'Education learning analytics': 21/40
+[INFO] Requesting 19 snippets for topic 'Education learning analytics'...
+[INFO] Received 19 snippets
+[INFO] Progress for topic 'Education learning analytics': 40/40
+[INFO] Completed topic 'Education learning analytics' for category null_checks: Generated 40 new snippets
+[INFO] Generating snippets for topic 'Personalized recipe recommender' (39/42), need 40 more
+[INFO] Requesting 20 snippets for topic 'Personalized recipe recommender'...
+[INFO] Received 20 snippets
+[INFO] Progress for topic 'Personalized recipe recommender': 20/40
+[INFO] Requesting 20 snippets for topic 'Personalized recipe recommender'...
+[INFO] Received 20 snippets
+[INFO] Progress for topic 'Personalized recipe recommender': 40/40
+[INFO] Completed topic 'Personalized recipe recommender' for category null_checks: Generated 40 new snippets
+[INFO] Generating snippets for topic 'Charity donation platform' (40/42), need 40 more
+[INFO] Requesting 20 snippets for topic 'Charity donation platform'...
+[INFO] Received 21 snippets
+[INFO] Progress for topic 'Charity donation platform': 21/40
+[INFO] Requesting 19 snippets for topic 'Charity donation platform'...
+[INFO] Received 19 snippets
+[INFO] Progress for topic 'Charity donation platform': 40/40
+[INFO] Completed topic 'Charity donation platform' for category null_checks: Generated 40 new snippets
+[INFO] Generating snippets for topic 'Sports score live updating' (41/42), need 40 more
+[INFO] Requesting 20 snippets for topic 'Sports score live updating'...
+[INFO] Received 20 snippets
+[INFO] Progress for topic 'Sports score live updating': 20/40
+[INFO] Requesting 20 snippets for topic 'Sports score live updating'...
+[INFO] Received 20 snippets
+[INFO] Progress for topic 'Sports score live updating': 40/40
+[INFO] Completed topic 'Sports score live updating' for category null_checks: Generated 40 new snippets
+[INFO] Generating snippets for topic 'Car rental fleet management' (42/42), need 40 more
+[INFO] Requesting 20 snippets for topic 'Car rental fleet management'...
+[INFO] Received 20 snippets
+[INFO] Progress for topic 'Car rental fleet management': 20/40
+[INFO] Requesting 20 snippets for topic 'Car rental fleet management'...
+[INFO] Received 20 snippets
+[INFO] Progress for topic 'Car rental fleet management': 40/40
+[INFO] Completed topic 'Car rental fleet management' for category null_checks: Generated 40 new snippets
+[INFO] Completed category null_checks: Generated 1771 total new snippets across all topics
+[INFO] 
+--- Generating snippets for category: throws ---
+[INFO] Generating snippets for topic 'E-commerce checkout' (1/42), need 40 more
+[INFO] Requesting 20 snippets for topic 'E-commerce checkout'...
+[INFO] Received 20 snippets
+[INFO] Progress for topic 'E-commerce checkout': 20/40
+[INFO] Requesting 20 snippets for topic 'E-commerce checkout'...
+[INFO] Received 20 snippets
+[INFO] Progress for topic 'E-commerce checkout': 40/40
+[INFO] Completed topic 'E-commerce checkout' for category throws: Generated 40 new snippets
+[INFO] Generating snippets for topic 'Mobile banking app' (2/42), need 40 more
+[INFO] Requesting 20 snippets for topic 'Mobile banking app'...
+[INFO] Received 21 snippets
+[INFO] Progress for topic 'Mobile banking app': 21/40
+[INFO] Requesting 19 snippets for topic 'Mobile banking app'...
+[INFO] Received 19 snippets
+[INFO] Progress for topic 'Mobile banking app': 40/40
+[INFO] Completed topic 'Mobile banking app' for category throws: Generated 40 new snippets
+[INFO] Generating snippets for topic 'Telemedicine appointment scheduling' (3/42), need 40 more
+[INFO] Requesting 20 snippets for topic 'Telemedicine appointment scheduling'...
+[INFO] Received 20 snippets
+[INFO] Progress for topic 'Telemedicine appointment scheduling': 20/40
+[INFO] Requesting 20 snippets for topic 'Telemedicine appointment scheduling'...
+[INFO] Received 20 snippets
+[INFO] Progress for topic 'Telemedicine appointment scheduling': 40/40
+[INFO] Completed topic 'Telemedicine appointment scheduling' for category throws: Generated 40 new snippets
+[INFO] Generating snippets for topic 'Fitness tracker analytics' (4/42), need 40 more
+[INFO] Requesting 20 snippets for topic 'Fitness tracker analytics'...
+[INFO] Received 20 snippets
+[INFO] Progress for topic 'Fitness tracker analytics': 20/40
+[INFO] Requesting 20 snippets for topic 'Fitness tracker analytics'...
+[INFO] Received 20 snippets
+[INFO] Progress for topic 'Fitness tracker analytics': 40/40
+[INFO] Completed topic 'Fitness tracker analytics' for category throws: Generated 40 new snippets
+[INFO] Generating snippets for topic 'Wix backend service for managing Pricing Plans' (5/42), need 40 more
+[INFO] Requesting 20 snippets for topic 'Wix backend service for managing Pricing Plans'...
+[INFO] Received 20 snippets
+[INFO] Progress for topic 'Wix backend service for managing Pricing Plans': 20/40
+[INFO] Requesting 20 snippets for topic 'Wix backend service for managing Pricing Plans'...
+[INFO] Received 20 snippets
+[INFO] Progress for topic 'Wix backend service for managing Pricing Plans': 40/40
+[INFO] Completed topic 'Wix backend service for managing Pricing Plans' for category throws: Generated 40 new snippets
+[INFO] Generating snippets for topic 'Smart home device control' (6/42), need 40 more
+[INFO] Requesting 20 snippets for topic 'Smart home device control'...
+[INFO] Received 20 snippets
+[INFO] Progress for topic 'Smart home device control': 20/40
+[INFO] Requesting 20 snippets for topic 'Smart home device control'...
+[INFO] Received 20 snippets
+[INFO] Progress for topic 'Smart home device control': 40/40
+[INFO] Completed topic 'Smart home device control' for category throws: Generated 40 new snippets
+[INFO] Generating snippets for topic 'Ride-sharing dispatch' (7/42), need 40 more
+[INFO] Requesting 20 snippets for topic 'Ride-sharing dispatch'...
+[INFO] Received 20 snippets
+[INFO] Progress for topic 'Ride-sharing dispatch': 20/40
+[INFO] Requesting 20 snippets for topic 'Ride-sharing dispatch'...
+[INFO] Received 20 snippets
+[INFO] Progress for topic 'Ride-sharing dispatch': 40/40
+[INFO] Completed topic 'Ride-sharing dispatch' for category throws: Generated 40 new snippets
+[INFO] Generating snippets for topic 'Airline ticketing system' (8/42), need 40 more
+[INFO] Requesting 20 snippets for topic 'Airline ticketing system'...
+[INFO] Received 20 snippets
+[INFO] Progress for topic 'Airline ticketing system': 20/40
+[INFO] Requesting 20 snippets for topic 'Airline ticketing system'...
+[INFO] Received 21 snippets
+[INFO] Progress for topic 'Airline ticketing system': 41/40
+[INFO] Completed topic 'Airline ticketing system' for category throws: Generated 41 new snippets
+[INFO] Generating snippets for topic 'Hotel reservation engine' (9/42), need 40 more
+[INFO] Requesting 20 snippets for topic 'Hotel reservation engine'...
+[INFO] Received 20 snippets
+[INFO] Progress for topic 'Hotel reservation engine': 20/40
+[INFO] Requesting 20 snippets for topic 'Hotel reservation engine'...
+[INFO] Received 20 snippets
+[INFO] Progress for topic 'Hotel reservation engine': 40/40
+[INFO] Completed topic 'Hotel reservation engine' for category throws: Generated 40 new snippets
+[INFO] Generating snippets for topic 'Food delivery logistics' (10/42), need 40 more
+[INFO] Requesting 20 snippets for topic 'Food delivery logistics'...
+[INFO] Received 20 snippets
+[INFO] Progress for topic 'Food delivery logistics': 20/40
+[INFO] Requesting 20 snippets for topic 'Food delivery logistics'...
+[INFO] Received 20 snippets
+[INFO] Progress for topic 'Food delivery logistics': 40/40
+[INFO] Completed topic 'Food delivery logistics' for category throws: Generated 40 new snippets
+[INFO] Generating snippets for topic 'Digital music streaming' (11/42), need 40 more
+[INFO] Requesting 20 snippets for topic 'Digital music streaming'...
+[INFO] Received 20 snippets
+[INFO] Progress for topic 'Digital music streaming': 20/40
+[INFO] Requesting 20 snippets for topic 'Digital music streaming'...
+[INFO] Received 20 snippets
+[INFO] Progress for topic 'Digital music streaming': 40/40
+[INFO] Completed topic 'Digital music streaming' for category throws: Generated 40 new snippets
+[INFO] Generating snippets for topic 'Online tutoring platform' (12/42), need 40 more
+[INFO] Requesting 20 snippets for topic 'Online tutoring platform'...
+[ERROR] Error processing category classes_for_data: Failed to parse API response: missing keys in dictionary: choices at index 309
+[INFO] === Dataset generation complete. Total snippets: 1771 ===

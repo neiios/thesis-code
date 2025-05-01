@@ -1,0 +1,1647 @@
+[INFO] Loaded schema from ./src/schema.json
+[INFO] Loaded 42 topics from ./src/topics.json
+[INFO] Planning to generate up to 5040 snippets (3 categories x 42 topics x 40 snippets per topic)
+[INFO] 
+--- Generating snippets for category: null_checks ---
+[INFO] Topic 'E-commerce checkout' already has 41 snippets for category null_checks. Skipping.
+[INFO] Topic 'Mobile banking app' already has 40 snippets for category null_checks. Skipping.
+[INFO] Topic 'Telemedicine appointment scheduling' already has 40 snippets for category null_checks. Skipping.
+[INFO] Topic 'Fitness tracker analytics' already has 41 snippets for category null_checks. Skipping.
+[INFO] Topic 'Wix backend service for managing Pricing Plans' already has 40 snippets for category null_checks. Skipping.
+[INFO] Topic 'Smart home device control' already has 40 snippets for category null_checks. Skipping.
+[INFO] Topic 'Ride-sharing dispatch' already has 54 snippets for category null_checks. Skipping.
+[INFO] Topic 'Airline ticketing system' already has 40 snippets for category null_checks. Skipping.
+[INFO] Topic 'Hotel reservation engine' already has 40 snippets for category null_checks. Skipping.
+[INFO] Topic 'Food delivery logistics' already has 40 snippets for category null_checks. Skipping.
+[INFO] Topic 'Digital music streaming' already has 40 snippets for category null_checks. Skipping.
+[INFO] Topic 'Online tutoring platform' already has 40 snippets for category null_checks. Skipping.
+[INFO] Topic 'Real-estate listing search' already has 40 snippets for category null_checks. Skipping.
+[INFO] Topic 'Cryptocurrency wallet management' already has 40 snippets for category null_checks. Skipping.
+[INFO] Topic 'Warehouse inventory tracking' already has 40 snippets for category null_checks. Skipping.
+[INFO] Topic 'Social media content moderation' already has 40 snippets for category null_checks. Skipping.
+[INFO] Topic 'Personalized news feed' already has 54 snippets for category null_checks. Skipping.
+[INFO] Topic 'Electric vehicle charging station locator' already has 40 snippets for category null_checks. Skipping.
+[INFO] Topic 'Agricultural crop monitoring' already has 40 snippets for category null_checks. Skipping.
+[INFO] Topic 'IoT sensor data aggregation' already has 40 snippets for category null_checks. Skipping.
+[INFO] Topic 'Public transit route planning' already has 40 snippets for category null_checks. Skipping.
+[INFO] Topic 'Retail point-of-sale integration' already has 40 snippets for category null_checks. Skipping.
+[INFO] Topic 'Online mortgage calculator' already has 40 snippets for category null_checks. Skipping.
+[INFO] Topic 'Telemetry for industrial machinery' already has 40 snippets for category null_checks. Skipping.
+[INFO] Topic 'Virtual reality gaming lobby' already has 40 snippets for category null_checks. Skipping.
+[INFO] Topic 'Employee time tracking' already has 41 snippets for category null_checks. Skipping.
+[INFO] Topic 'Weather alert notification service' already has 40 snippets for category null_checks. Skipping.
+[INFO] Topic 'Fraud detection in payments' already has 40 snippets for category null_checks. Skipping.
+[INFO] Topic 'Medical imaging data viewer' already has 52 snippets for category null_checks. Skipping.
+[INFO] Topic 'Wix backend service for managing Payment Links' already has 55 snippets for category null_checks. Skipping.
+[INFO] Topic 'Language translation chat bot' already has 40 snippets for category null_checks. Skipping.
+[INFO] Topic 'Energy consumption dashboard' already has 40 snippets for category null_checks. Skipping.
+[INFO] Topic 'Electronic voting tallying' already has 59 snippets for category null_checks. Skipping.
+[INFO] Topic 'Digital library catalog search' already has 40 snippets for category null_checks. Skipping.
+[INFO] Topic 'Event ticket QR validation' already has 40 snippets for category null_checks. Skipping.
+[INFO] Topic 'Drone delivery path optimization' already has 54 snippets for category null_checks. Skipping.
+[INFO] Topic 'Insurance claim submission portal' already has 40 snippets for category null_checks. Skipping.
+[INFO] Topic 'Education learning analytics' already has 40 snippets for category null_checks. Skipping.
+[INFO] Topic 'Personalized recipe recommender' already has 40 snippets for category null_checks. Skipping.
+[INFO] Topic 'Charity donation platform' already has 40 snippets for category null_checks. Skipping.
+[INFO] Topic 'Sports score live updating' already has 40 snippets for category null_checks. Skipping.
+[INFO] Topic 'Car rental fleet management' already has 40 snippets for category null_checks. Skipping.
+[INFO] Completed category null_checks: Generated 1771 total new snippets across all topics
+[INFO] 
+--- Generating snippets for category: throws ---
+[INFO] Topic 'E-commerce checkout' already has 40 snippets for category throws. Skipping.
+[INFO] Topic 'Mobile banking app' already has 40 snippets for category throws. Skipping.
+[INFO] Topic 'Telemedicine appointment scheduling' already has 40 snippets for category throws. Skipping.
+[INFO] Topic 'Fitness tracker analytics' already has 40 snippets for category throws. Skipping.
+[INFO] Topic 'Wix backend service for managing Pricing Plans' already has 40 snippets for category throws. Skipping.
+[INFO] Topic 'Smart home device control' already has 40 snippets for category throws. Skipping.
+[INFO] Topic 'Ride-sharing dispatch' already has 40 snippets for category throws. Skipping.
+[INFO] Topic 'Airline ticketing system' already has 41 snippets for category throws. Skipping.
+[INFO] Topic 'Hotel reservation engine' already has 40 snippets for category throws. Skipping.
+[INFO] Topic 'Food delivery logistics' already has 40 snippets for category throws. Skipping.
+[INFO] Topic 'Digital music streaming' already has 40 snippets for category throws. Skipping.
+[INFO] Generating snippets for topic 'Online tutoring platform' (12/42), need 40 more
+[INFO] Requesting 20 snippets for topic 'Online tutoring platform'...
+[INFO] Received 20 snippets
+[INFO] Progress for topic 'Online tutoring platform': 20/40
+[INFO] Requesting 20 snippets for topic 'Online tutoring platform'...
+[INFO] Received 20 snippets
+[INFO] Progress for topic 'Online tutoring platform': 40/40
+[INFO] Completed topic 'Online tutoring platform' for category throws: Generated 40 new snippets
+[INFO] Generating snippets for topic 'Real-estate listing search' (13/42), need 40 more
+[INFO] Requesting 20 snippets for topic 'Real-estate listing search'...
+[INFO] Received 21 snippets
+[INFO] Progress for topic 'Real-estate listing search': 21/40
+[INFO] Requesting 19 snippets for topic 'Real-estate listing search'...
+[INFO] Received 19 snippets
+[INFO] Progress for topic 'Real-estate listing search': 40/40
+[INFO] Completed topic 'Real-estate listing search' for category throws: Generated 40 new snippets
+[INFO] Generating snippets for topic 'Cryptocurrency wallet management' (14/42), need 40 more
+[INFO] Requesting 20 snippets for topic 'Cryptocurrency wallet management'...
+[INFO] Received 20 snippets
+[INFO] Progress for topic 'Cryptocurrency wallet management': 20/40
+[INFO] Requesting 20 snippets for topic 'Cryptocurrency wallet management'...
+[INFO] Received 20 snippets
+[INFO] Progress for topic 'Cryptocurrency wallet management': 40/40
+[INFO] Completed topic 'Cryptocurrency wallet management' for category throws: Generated 40 new snippets
+[INFO] Generating snippets for topic 'Warehouse inventory tracking' (15/42), need 40 more
+[INFO] Requesting 20 snippets for topic 'Warehouse inventory tracking'...
+[INFO] Received 20 snippets
+[INFO] Progress for topic 'Warehouse inventory tracking': 20/40
+[INFO] Requesting 20 snippets for topic 'Warehouse inventory tracking'...
+[INFO] Received 21 snippets
+[INFO] Progress for topic 'Warehouse inventory tracking': 41/40
+[INFO] Completed topic 'Warehouse inventory tracking' for category throws: Generated 41 new snippets
+[INFO] Generating snippets for topic 'Social media content moderation' (16/42), need 40 more
+[INFO] Requesting 20 snippets for topic 'Social media content moderation'...
+[INFO] Received 20 snippets
+[INFO] Progress for topic 'Social media content moderation': 20/40
+[INFO] Requesting 20 snippets for topic 'Social media content moderation'...
+[INFO] Received 20 snippets
+[INFO] Progress for topic 'Social media content moderation': 40/40
+[INFO] Completed topic 'Social media content moderation' for category throws: Generated 40 new snippets
+[INFO] Generating snippets for topic 'Personalized news feed' (17/42), need 40 more
+[INFO] Requesting 20 snippets for topic 'Personalized news feed'...
+[INFO] Received 21 snippets
+[INFO] Progress for topic 'Personalized news feed': 21/40
+[INFO] Requesting 19 snippets for topic 'Personalized news feed'...
+[INFO] Received 19 snippets
+[INFO] Progress for topic 'Personalized news feed': 40/40
+[INFO] Completed topic 'Personalized news feed' for category throws: Generated 40 new snippets
+[INFO] Generating snippets for topic 'Electric vehicle charging station locator' (18/42), need 40 more
+[INFO] Requesting 20 snippets for topic 'Electric vehicle charging station locator'...
+[INFO] Received 20 snippets
+[INFO] Progress for topic 'Electric vehicle charging station locator': 20/40
+[INFO] Requesting 20 snippets for topic 'Electric vehicle charging station locator'...
+[INFO] Received 20 snippets
+[INFO] Progress for topic 'Electric vehicle charging station locator': 40/40
+[INFO] Completed topic 'Electric vehicle charging station locator' for category throws: Generated 40 new snippets
+[INFO] Generating snippets for topic 'Agricultural crop monitoring' (19/42), need 40 more
+[INFO] Requesting 20 snippets for topic 'Agricultural crop monitoring'...
+[INFO] Received 20 snippets
+[INFO] Progress for topic 'Agricultural crop monitoring': 20/40
+[INFO] Requesting 20 snippets for topic 'Agricultural crop monitoring'...
+[INFO] Received 20 snippets
+[INFO] Progress for topic 'Agricultural crop monitoring': 40/40
+[INFO] Completed topic 'Agricultural crop monitoring' for category throws: Generated 40 new snippets
+[INFO] Generating snippets for topic 'IoT sensor data aggregation' (20/42), need 40 more
+[INFO] Requesting 20 snippets for topic 'IoT sensor data aggregation'...
+[INFO] Received 20 snippets
+[INFO] Progress for topic 'IoT sensor data aggregation': 20/40
+[INFO] Requesting 20 snippets for topic 'IoT sensor data aggregation'...
+[INFO] Received 20 snippets
+[INFO] Progress for topic 'IoT sensor data aggregation': 40/40
+[INFO] Completed topic 'IoT sensor data aggregation' for category throws: Generated 40 new snippets
+[INFO] Generating snippets for topic 'Public transit route planning' (21/42), need 40 more
+[INFO] Requesting 20 snippets for topic 'Public transit route planning'...
+[INFO] Received 20 snippets
+[INFO] Progress for topic 'Public transit route planning': 20/40
+[INFO] Requesting 20 snippets for topic 'Public transit route planning'...
+[INFO] Received 20 snippets
+[INFO] Progress for topic 'Public transit route planning': 40/40
+[INFO] Completed topic 'Public transit route planning' for category throws: Generated 40 new snippets
+[INFO] Generating snippets for topic 'Retail point-of-sale integration' (22/42), need 40 more
+[INFO] Requesting 20 snippets for topic 'Retail point-of-sale integration'...
+[INFO] Received 20 snippets
+[INFO] Progress for topic 'Retail point-of-sale integration': 20/40
+[INFO] Requesting 20 snippets for topic 'Retail point-of-sale integration'...
+[INFO] Received 20 snippets
+[INFO] Progress for topic 'Retail point-of-sale integration': 40/40
+[INFO] Completed topic 'Retail point-of-sale integration' for category throws: Generated 40 new snippets
+[INFO] Generating snippets for topic 'Online mortgage calculator' (23/42), need 40 more
+[INFO] Requesting 20 snippets for topic 'Online mortgage calculator'...
+[INFO] Received 20 snippets
+[INFO] Progress for topic 'Online mortgage calculator': 20/40
+[INFO] Requesting 20 snippets for topic 'Online mortgage calculator'...
+[INFO] Received 20 snippets
+[INFO] Progress for topic 'Online mortgage calculator': 40/40
+[INFO] Completed topic 'Online mortgage calculator' for category throws: Generated 40 new snippets
+[INFO] Generating snippets for topic 'Telemetry for industrial machinery' (24/42), need 40 more
+[INFO] Requesting 20 snippets for topic 'Telemetry for industrial machinery'...
+[INFO] Received 20 snippets
+[INFO] Progress for topic 'Telemetry for industrial machinery': 20/40
+[INFO] Requesting 20 snippets for topic 'Telemetry for industrial machinery'...
+[INFO] Received 20 snippets
+[INFO] Progress for topic 'Telemetry for industrial machinery': 40/40
+[INFO] Completed topic 'Telemetry for industrial machinery' for category throws: Generated 40 new snippets
+[INFO] Generating snippets for topic 'Virtual reality gaming lobby' (25/42), need 40 more
+[INFO] Requesting 20 snippets for topic 'Virtual reality gaming lobby'...
+[INFO] Received 20 snippets
+[INFO] Progress for topic 'Virtual reality gaming lobby': 20/40
+[INFO] Requesting 20 snippets for topic 'Virtual reality gaming lobby'...
+[INFO] Received 20 snippets
+[INFO] Progress for topic 'Virtual reality gaming lobby': 40/40
+[INFO] Completed topic 'Virtual reality gaming lobby' for category throws: Generated 40 new snippets
+[INFO] Generating snippets for topic 'Employee time tracking' (26/42), need 40 more
+[INFO] Requesting 20 snippets for topic 'Employee time tracking'...
+[INFO] Received 20 snippets
+[INFO] Progress for topic 'Employee time tracking': 20/40
+[INFO] Requesting 20 snippets for topic 'Employee time tracking'...
+[INFO] Received 20 snippets
+[INFO] Progress for topic 'Employee time tracking': 40/40
+[INFO] Completed topic 'Employee time tracking' for category throws: Generated 40 new snippets
+[INFO] Generating snippets for topic 'Weather alert notification service' (27/42), need 40 more
+[INFO] Requesting 20 snippets for topic 'Weather alert notification service'...
+[INFO] Received 20 snippets
+[INFO] Progress for topic 'Weather alert notification service': 20/40
+[INFO] Requesting 20 snippets for topic 'Weather alert notification service'...
+[INFO] Received 21 snippets
+[INFO] Progress for topic 'Weather alert notification service': 41/40
+[INFO] Completed topic 'Weather alert notification service' for category throws: Generated 41 new snippets
+[INFO] Generating snippets for topic 'Fraud detection in payments' (28/42), need 40 more
+[INFO] Requesting 20 snippets for topic 'Fraud detection in payments'...
+[INFO] Received 20 snippets
+[INFO] Progress for topic 'Fraud detection in payments': 20/40
+[INFO] Requesting 20 snippets for topic 'Fraud detection in payments'...
+[INFO] Received 20 snippets
+[INFO] Progress for topic 'Fraud detection in payments': 40/40
+[INFO] Completed topic 'Fraud detection in payments' for category throws: Generated 40 new snippets
+[INFO] Generating snippets for topic 'Medical imaging data viewer' (29/42), need 40 more
+[INFO] Requesting 20 snippets for topic 'Medical imaging data viewer'...
+[INFO] Received 20 snippets
+[INFO] Progress for topic 'Medical imaging data viewer': 20/40
+[INFO] Requesting 20 snippets for topic 'Medical imaging data viewer'...
+[INFO] Received 20 snippets
+[INFO] Progress for topic 'Medical imaging data viewer': 40/40
+[INFO] Completed topic 'Medical imaging data viewer' for category throws: Generated 40 new snippets
+[INFO] Generating snippets for topic 'Wix backend service for managing Payment Links' (30/42), need 40 more
+[INFO] Requesting 20 snippets for topic 'Wix backend service for managing Payment Links'...
+[INFO] Received 20 snippets
+[INFO] Progress for topic 'Wix backend service for managing Payment Links': 20/40
+[INFO] Requesting 20 snippets for topic 'Wix backend service for managing Payment Links'...
+[INFO] Received 20 snippets
+[INFO] Progress for topic 'Wix backend service for managing Payment Links': 40/40
+[INFO] Completed topic 'Wix backend service for managing Payment Links' for category throws: Generated 40 new snippets
+[INFO] Generating snippets for topic 'Language translation chat bot' (31/42), need 40 more
+[INFO] Requesting 20 snippets for topic 'Language translation chat bot'...
+[INFO] Received 20 snippets
+[INFO] Progress for topic 'Language translation chat bot': 20/40
+[INFO] Requesting 20 snippets for topic 'Language translation chat bot'...
+[INFO] Received 21 snippets
+[INFO] Progress for topic 'Language translation chat bot': 41/40
+[INFO] Completed topic 'Language translation chat bot' for category throws: Generated 41 new snippets
+[INFO] Generating snippets for topic 'Energy consumption dashboard' (32/42), need 40 more
+[INFO] Requesting 20 snippets for topic 'Energy consumption dashboard'...
+[INFO] Received 20 snippets
+[INFO] Progress for topic 'Energy consumption dashboard': 20/40
+[INFO] Requesting 20 snippets for topic 'Energy consumption dashboard'...
+[INFO] Received 20 snippets
+[INFO] Progress for topic 'Energy consumption dashboard': 40/40
+[INFO] Completed topic 'Energy consumption dashboard' for category throws: Generated 40 new snippets
+[INFO] Generating snippets for topic 'Electronic voting tallying' (33/42), need 40 more
+[INFO] Requesting 20 snippets for topic 'Electronic voting tallying'...
+[INFO] Received 20 snippets
+[INFO] Progress for topic 'Electronic voting tallying': 20/40
+[INFO] Requesting 20 snippets for topic 'Electronic voting tallying'...
+[ERROR] Response body: 
+         
+
+         
+
+         
+
+         
+
+         
+
+         
+
+         
+
+         
+
+         
+
+         
+
+         
+
+         
+
+         
+
+         
+
+         
+
+         
+
+         
+
+         
+
+         
+
+         
+
+         
+
+         
+
+         
+
+         
+
+         
+
+         
+
+         
+
+         
+
+         
+
+         
+
+         
+
+         
+
+         
+
+         
+
+         
+
+         
+
+         
+
+         
+
+         
+
+         
+
+         
+
+         
+
+         
+
+         
+
+         
+
+         
+
+         
+
+         
+
+         
+
+         
+
+         
+
+         
+
+         
+
+         
+
+         
+
+         
+
+         
+
+         
+
+         
+
+         
+
+         
+
+         
+
+         
+
+         
+
+         
+
+         
+
+         
+
+         
+
+         
+
+         
+
+         
+
+         
+
+         
+
+         
+
+         
+
+         
+
+         
+
+         
+
+         
+
+         
+
+         
+
+         
+
+         
+
+         
+
+         
+
+         
+
+         
+
+         
+
+         
+
+         
+
+         
+
+         
+
+         
+
+         
+
+         
+
+         
+
+         
+
+         
+
+         
+
+         
+
+         
+
+         
+
+         
+
+         
+
+         
+
+         
+
+         
+
+         
+
+         
+
+         
+
+         
+
+         
+
+         
+
+         
+
+         
+
+         
+
+         
+
+         
+
+         
+
+         
+
+         
+
+         
+
+         
+
+         
+
+         
+
+         
+
+         
+
+         
+
+         
+
+         
+
+         
+
+         
+
+         
+
+         
+
+         
+
+         
+
+         
+
+         
+
+         
+
+         
+
+         
+
+         
+
+         
+
+         
+
+         
+
+         
+
+         
+
+         
+
+         
+
+         
+
+         
+
+         
+
+         
+
+         
+
+         
+
+         
+
+         
+
+         
+
+         
+
+         
+
+         
+
+         
+
+         
+
+         
+
+         
+
+         
+
+         
+
+         
+
+         
+
+         
+
+         
+
+         
+
+         
+
+         
+
+         
+
+         
+
+         
+
+         
+
+         
+
+         
+
+         
+
+         
+
+         
+
+         
+
+         
+
+         
+
+         
+
+         
+
+         
+
+         
+
+         
+
+         
+
+         
+
+         
+
+         
+
+         
+
+         
+
+         
+
+         
+
+         
+
+         
+
+         
+
+         
+
+         
+
+         
+
+         
+
+         
+
+         
+
+         
+
+         
+
+         
+
+         
+
+         
+
+         
+
+         
+
+         
+
+         
+
+         
+
+         
+
+         
+
+         
+
+         
+
+         
+
+         
+
+         
+
+         
+
+         
+
+         
+
+         
+
+         
+
+         
+
+         
+
+         
+
+         
+
+         
+
+         
+
+         
+
+         
+
+         
+
+         
+
+         
+
+         
+
+         
+
+         
+
+         
+
+         
+
+         
+
+         
+
+         
+
+         
+
+         
+
+         
+
+         
+
+         
+
+         
+
+         
+
+         
+
+         
+
+         
+
+         
+
+         
+
+         
+
+         
+
+         
+
+         
+
+         
+
+         
+
+         
+
+         
+
+         
+
+         
+
+         
+
+         
+
+         
+
+         
+
+         
+
+         
+
+         
+
+         
+
+         
+
+         
+
+         
+
+         
+
+         
+
+         
+
+         
+
+         
+
+         
+
+         
+
+         
+
+         
+
+         
+
+         
+
+         
+
+         
+
+         
+
+         
+
+         
+
+         
+
+         
+
+         
+
+         
+
+         
+
+         
+
+         
+
+         
+
+         
+
+         
+
+         
+
+         
+
+         
+
+         
+
+         
+
+         
+
+         
+
+         
+
+         
+
+         
+
+         
+
+         
+
+         
+
+         
+
+         
+
+         
+
+         
+
+         
+
+         
+
+         
+
+         
+
+         
+
+         
+
+         
+
+         
+
+         
+
+         
+
+         
+
+         
+
+         
+
+         
+
+         
+
+         
+
+         
+
+         
+
+         
+
+         
+
+         
+
+         
+
+         
+
+         
+
+         
+
+         
+
+         
+
+         
+
+         
+
+         
+
+         
+
+         
+
+         
+
+         
+
+         
+
+         
+
+         
+
+         
+
+         
+
+         
+
+         
+
+         
+
+         
+
+         
+
+         
+
+         
+
+         
+
+         
+
+         
+
+         
+
+         
+
+         
+
+         
+
+         
+
+         
+
+         
+
+         
+
+         
+
+         
+
+         
+
+         
+
+         
+
+         
+
+         
+
+         
+
+         
+
+         
+
+         
+
+         
+
+         
+
+         
+
+         
+
+         
+
+         
+
+         
+
+         
+
+         
+
+         
+
+         
+
+         
+
+         
+
+         
+
+         
+
+         
+
+         
+
+         
+
+         
+
+         
+
+         
+
+         
+
+         
+
+         
+
+         
+
+         
+
+         
+
+         
+
+         
+
+         
+
+         
+
+         
+
+         
+
+         
+
+         
+
+         
+
+         
+
+         
+
+         
+
+         
+
+         
+
+         
+
+         
+
+         
+
+         
+
+         
+
+         
+
+         
+
+         
+
+         
+
+         
+
+         
+
+         
+
+         
+
+         
+
+         
+
+         
+
+         
+
+         
+
+         
+
+         
+
+         
+
+         
+
+         
+
+         
+
+         
+
+         
+
+         
+
+         
+
+         
+
+         
+
+         
+
+         
+
+         
+
+         
+
+         
+
+         
+
+         
+
+         
+
+         
+
+         
+
+         
+
+         
+
+         
+
+         
+
+         
+
+         
+
+         
+
+         
+
+         
+
+         
+
+         
+
+         
+
+         
+
+         
+
+         
+
+         
+
+         
+
+         
+
+         
+
+         
+
+         
+
+         
+
+         
+
+         
+
+         
+
+         
+
+         
+
+         
+
+         
+
+         
+
+         
+
+         
+
+         
+
+         
+
+         
+
+         
+
+         
+
+         
+
+         
+
+         
+
+         
+
+         
+
+         
+
+         
+
+         
+
+         
+
+         
+
+         
+
+         
+
+         
+
+         
+
+         
+
+         
+
+         
+
+         
+
+         
+
+         
+
+         
+
+         
+
+         
+
+         
+
+         
+
+         
+
+         
+
+         
+
+         
+
+         
+
+         
+
+         
+
+         
+
+         
+
+         
+
+         
+
+         
+
+         
+
+         
+
+         
+
+         
+
+         
+
+         
+
+         
+
+         
+
+         
+
+         
+
+         
+
+         
+
+         
+
+         
+
+         
+
+         
+
+         
+
+         
+
+         
+
+         
+
+         
+
+         
+
+         
+
+         
+
+         
+
+         
+
+         
+
+         
+
+         
+
+         
+
+         
+
+         
+
+         
+
+         
+
+         
+
+         
+
+         
+
+         
+
+         
+
+         
+
+         
+
+         
+
+         
+
+         
+
+         
+
+         
+
+         
+
+         
+
+         
+
+         
+
+         
+
+         
+
+         
+
+         
+
+         
+
+         
+
+         
+
+         
+
+         
+
+         
+
+         
+
+         
+
+         
+
+         
+
+         
+
+         
+
+         
+
+         
+
+         
+
+         
+
+         
+
+         
+
+         
+
+         
+
+         
+
+         
+
+         
+
+         
+
+         
+
+         
+
+         
+
+[ERROR] Error processing category throws: Failed to parse API response: exhausted input
+[INFO] 
+--- Generating snippets for category: classes_for_data ---
+[INFO] Generating snippets for topic 'E-commerce checkout' (1/42), need 40 more
+[INFO] Requesting 20 snippets for topic 'E-commerce checkout'...
+[INFO] Received 20 snippets
+[INFO] Progress for topic 'E-commerce checkout': 20/40
+[INFO] Requesting 20 snippets for topic 'E-commerce checkout'...
+[INFO] Received 20 snippets
+[INFO] Progress for topic 'E-commerce checkout': 40/40
+[INFO] Completed topic 'E-commerce checkout' for category classes_for_data: Generated 40 new snippets
+[INFO] Generating snippets for topic 'Mobile banking app' (2/42), need 40 more
+[INFO] Requesting 20 snippets for topic 'Mobile banking app'...
+[INFO] Received 20 snippets
+[INFO] Progress for topic 'Mobile banking app': 20/40
+[INFO] Requesting 20 snippets for topic 'Mobile banking app'...
+[INFO] Received 20 snippets
+[INFO] Progress for topic 'Mobile banking app': 40/40
+[INFO] Completed topic 'Mobile banking app' for category classes_for_data: Generated 40 new snippets
+[INFO] Generating snippets for topic 'Telemedicine appointment scheduling' (3/42), need 40 more
+[INFO] Requesting 20 snippets for topic 'Telemedicine appointment scheduling'...
+[INFO] Received 20 snippets
+[INFO] Progress for topic 'Telemedicine appointment scheduling': 20/40
+[INFO] Requesting 20 snippets for topic 'Telemedicine appointment scheduling'...
+[INFO] Received 20 snippets
+[INFO] Progress for topic 'Telemedicine appointment scheduling': 40/40
+[INFO] Completed topic 'Telemedicine appointment scheduling' for category classes_for_data: Generated 40 new snippets
+[INFO] Generating snippets for topic 'Fitness tracker analytics' (4/42), need 40 more
+[INFO] Requesting 20 snippets for topic 'Fitness tracker analytics'...
+[INFO] Received 20 snippets
+[INFO] Progress for topic 'Fitness tracker analytics': 20/40
+[INFO] Requesting 20 snippets for topic 'Fitness tracker analytics'...
+[INFO] Received 20 snippets
+[INFO] Progress for topic 'Fitness tracker analytics': 40/40
+[INFO] Completed topic 'Fitness tracker analytics' for category classes_for_data: Generated 40 new snippets
+[INFO] Generating snippets for topic 'Wix backend service for managing Pricing Plans' (5/42), need 40 more
+[INFO] Requesting 20 snippets for topic 'Wix backend service for managing Pricing Plans'...
+[INFO] Received 20 snippets
+[INFO] Progress for topic 'Wix backend service for managing Pricing Plans': 20/40
+[INFO] Requesting 20 snippets for topic 'Wix backend service for managing Pricing Plans'...
+[INFO] Received 19 snippets
+[INFO] Progress for topic 'Wix backend service for managing Pricing Plans': 39/40
+[INFO] Requesting 1 snippets for topic 'Wix backend service for managing Pricing Plans'...
+[INFO] Received 1 snippets
+[INFO] Progress for topic 'Wix backend service for managing Pricing Plans': 40/40
+[INFO] Completed topic 'Wix backend service for managing Pricing Plans' for category classes_for_data: Generated 40 new snippets
+[INFO] Generating snippets for topic 'Smart home device control' (6/42), need 40 more
+[INFO] Requesting 20 snippets for topic 'Smart home device control'...
+[INFO] Received 20 snippets
+[INFO] Progress for topic 'Smart home device control': 20/40
+[INFO] Requesting 20 snippets for topic 'Smart home device control'...
+[INFO] Received 20 snippets
+[INFO] Progress for topic 'Smart home device control': 40/40
+[INFO] Completed topic 'Smart home device control' for category classes_for_data: Generated 40 new snippets
+[INFO] Generating snippets for topic 'Ride-sharing dispatch' (7/42), need 40 more
+[INFO] Requesting 20 snippets for topic 'Ride-sharing dispatch'...
+[INFO] Received 21 snippets
+[INFO] Progress for topic 'Ride-sharing dispatch': 21/40
+[INFO] Requesting 19 snippets for topic 'Ride-sharing dispatch'...
+[INFO] Received 19 snippets
+[INFO] Progress for topic 'Ride-sharing dispatch': 40/40
+[INFO] Completed topic 'Ride-sharing dispatch' for category classes_for_data: Generated 40 new snippets
+[INFO] Generating snippets for topic 'Airline ticketing system' (8/42), need 40 more
+[INFO] Requesting 20 snippets for topic 'Airline ticketing system'...
+[INFO] Received 20 snippets
+[INFO] Progress for topic 'Airline ticketing system': 20/40
+[INFO] Requesting 20 snippets for topic 'Airline ticketing system'...
+[INFO] Received 20 snippets
+[INFO] Progress for topic 'Airline ticketing system': 40/40
+[INFO] Completed topic 'Airline ticketing system' for category classes_for_data: Generated 40 new snippets
+[INFO] Generating snippets for topic 'Hotel reservation engine' (9/42), need 40 more
+[INFO] Requesting 20 snippets for topic 'Hotel reservation engine'...
+[INFO] Received 20 snippets
+[INFO] Progress for topic 'Hotel reservation engine': 20/40
+[INFO] Requesting 20 snippets for topic 'Hotel reservation engine'...
+[INFO] Received 20 snippets
+[INFO] Progress for topic 'Hotel reservation engine': 40/40
+[INFO] Completed topic 'Hotel reservation engine' for category classes_for_data: Generated 40 new snippets
+[INFO] Generating snippets for topic 'Food delivery logistics' (10/42), need 40 more
+[INFO] Requesting 20 snippets for topic 'Food delivery logistics'...
+[INFO] Received 20 snippets
+[INFO] Progress for topic 'Food delivery logistics': 20/40
+[INFO] Requesting 20 snippets for topic 'Food delivery logistics'...
+[INFO] Received 20 snippets
+[INFO] Progress for topic 'Food delivery logistics': 40/40
+[INFO] Completed topic 'Food delivery logistics' for category classes_for_data: Generated 40 new snippets
+[INFO] Generating snippets for topic 'Digital music streaming' (11/42), need 40 more
+[INFO] Requesting 20 snippets for topic 'Digital music streaming'...
+[INFO] Received 20 snippets
+[INFO] Progress for topic 'Digital music streaming': 20/40
+[INFO] Requesting 20 snippets for topic 'Digital music streaming'...
+[INFO] Received 20 snippets
+[INFO] Progress for topic 'Digital music streaming': 40/40
+[INFO] Completed topic 'Digital music streaming' for category classes_for_data: Generated 40 new snippets
+[INFO] Generating snippets for topic 'Online tutoring platform' (12/42), need 40 more
+[INFO] Requesting 20 snippets for topic 'Online tutoring platform'...
+[INFO] Received 20 snippets
+[INFO] Progress for topic 'Online tutoring platform': 20/40
+[INFO] Requesting 20 snippets for topic 'Online tutoring platform'...
+[INFO] Received 20 snippets
+[INFO] Progress for topic 'Online tutoring platform': 40/40
+[INFO] Completed topic 'Online tutoring platform' for category classes_for_data: Generated 40 new snippets
+[INFO] Generating snippets for topic 'Real-estate listing search' (13/42), need 40 more
+[INFO] Requesting 20 snippets for topic 'Real-estate listing search'...
+[INFO] Received 20 snippets
+[INFO] Progress for topic 'Real-estate listing search': 20/40
+[INFO] Requesting 20 snippets for topic 'Real-estate listing search'...
+[INFO] Received 20 snippets
+[INFO] Progress for topic 'Real-estate listing search': 40/40
+[INFO] Completed topic 'Real-estate listing search' for category classes_for_data: Generated 40 new snippets
+[INFO] Generating snippets for topic 'Cryptocurrency wallet management' (14/42), need 40 more
+[INFO] Requesting 20 snippets for topic 'Cryptocurrency wallet management'...
+[INFO] Received 20 snippets
+[INFO] Progress for topic 'Cryptocurrency wallet management': 20/40
+[INFO] Requesting 20 snippets for topic 'Cryptocurrency wallet management'...
+[INFO] Received 20 snippets
+[INFO] Progress for topic 'Cryptocurrency wallet management': 40/40
+[INFO] Completed topic 'Cryptocurrency wallet management' for category classes_for_data: Generated 40 new snippets
+[INFO] Generating snippets for topic 'Warehouse inventory tracking' (15/42), need 40 more
+[INFO] Requesting 20 snippets for topic 'Warehouse inventory tracking'...
+[INFO] Received 20 snippets
+[INFO] Progress for topic 'Warehouse inventory tracking': 20/40
+[INFO] Requesting 20 snippets for topic 'Warehouse inventory tracking'...
+[INFO] Received 20 snippets
+[INFO] Progress for topic 'Warehouse inventory tracking': 40/40
+[INFO] Completed topic 'Warehouse inventory tracking' for category classes_for_data: Generated 40 new snippets
+[INFO] Generating snippets for topic 'Social media content moderation' (16/42), need 40 more
+[INFO] Requesting 20 snippets for topic 'Social media content moderation'...
+[INFO] Received 20 snippets
+[INFO] Progress for topic 'Social media content moderation': 20/40
+[INFO] Requesting 20 snippets for topic 'Social media content moderation'...
+[INFO] Received 20 snippets
+[INFO] Progress for topic 'Social media content moderation': 40/40
+[INFO] Completed topic 'Social media content moderation' for category classes_for_data: Generated 40 new snippets
+[INFO] Generating snippets for topic 'Personalized news feed' (17/42), need 40 more
+[INFO] Requesting 20 snippets for topic 'Personalized news feed'...
+[INFO] Received 20 snippets
+[INFO] Progress for topic 'Personalized news feed': 20/40
+[INFO] Requesting 20 snippets for topic 'Personalized news feed'...
+[INFO] Received 20 snippets
+[INFO] Progress for topic 'Personalized news feed': 40/40
+[INFO] Completed topic 'Personalized news feed' for category classes_for_data: Generated 40 new snippets
+[INFO] Generating snippets for topic 'Electric vehicle charging station locator' (18/42), need 40 more
+[INFO] Requesting 20 snippets for topic 'Electric vehicle charging station locator'...
+[INFO] Received 20 snippets
+[INFO] Progress for topic 'Electric vehicle charging station locator': 20/40
+[INFO] Requesting 20 snippets for topic 'Electric vehicle charging station locator'...
+[INFO] Received 20 snippets
+[INFO] Progress for topic 'Electric vehicle charging station locator': 40/40
+[INFO] Completed topic 'Electric vehicle charging station locator' for category classes_for_data: Generated 40 new snippets
+[INFO] Generating snippets for topic 'Agricultural crop monitoring' (19/42), need 40 more
+[INFO] Requesting 20 snippets for topic 'Agricultural crop monitoring'...
+[ERROR] Error processing category classes_for_data: Failed to parse API response: expected json value got "\r" at index 6
+[INFO] === Dataset generation complete. Total snippets: 1771 ===

@@ -1,0 +1,51 @@
+[INFO] Processing snippets from ./results/raw_full.jsonl
+[INFO] Loaded 5137 snippets
+[ERROR] Failed to parse snippet 654291bf-80e9-4672-9dac-6b479e512505:
+case class PlanAccessLevel(planId: String, accessType: AccessType)
+enum AccessType: case Admin, Editor, Viewer
+[ERROR] Failed to parse snippet 6cadb223-15ac-4d9b-8f39-445fb4e30225:
+class BoardingPass(val barcode: String, val flightNumber: String, val seat: String) { override def equals(obj: Any): Boolean = obj match { case that: BoardingPass => this.barcode == that.barcode && this.flightNumber == that.flightNumber && this.seat == that.seat case _ => false } override def hashCode: Int = (barcode, flightNumber, seat).## }
+[ERROR] Failed to parse snippet a107fcca-b597-4b6c-97ae-868b816fa9e9:
+class CheckInInfo(val passengerId: Int, val flightNumber: String, val baggageCount: Int) { override def equals(obj: Any): Boolean = obj match { case i: CheckInInfo => i.passengerId == passengerId && i.flightNumber == flightNumber && i.baggageCount == baggageCount case _ => false } override def hashCode: Int = (passengerId, flightNumber, baggageCount).## }
+[ERROR] Failed to parse snippet 003e0999-1153-4f37-8e5c-9e8ea925bd90:
+class UpgradeOffer(val offerId: Int, val bookingReference: String, val newClass: String) { override def equals(obj: Any): Boolean = obj match { case o: UpgradeOffer => offerId == o.offerId && bookingReference == o.bookingReference && newClass == o.newClass case _ => false } override def hashCode: Int = (offerId, bookingReference, newClass).## }
+[ERROR] Failed to parse snippet 805d1845-cc0b-403a-a005-b53329b58870:
+class Customer(val customerId: String, val fullName: String, val driversLicense: String) { override def equals(other: Any): Boolean = other match { case that: Customer => customerId == that.customerId && fullName == that.fullName && driversLicense == that.driversLicense case _ => false } override def hashCode: Int = customerId.hashCode ^ fullName.hashCode ^ driversLicense.hashCode }
+[ERROR] Failed to parse snippet eda97c6d-b54c-418a-9ae2-16dc000ab6e1:
+class OptionUpgrade(val upgradeId: String, val vehiclePlate: String, val featureName: String, val additionalCost: Double) { override def equals(obj: Any): Boolean = obj match { case that: OptionUpgrade => upgradeId == that.upgradeId && vehiclePlate == that.vehiclePlate && featureName == that.featureName case _ => false } override def hashCode(): Int = upgradeId.hashCode ^ vehiclePlate.hashCode ^ featureName.hashCode }
+[ERROR] Failed to parse snippet 105971e0-2a4e-40bc-9cfb-b2864d28e834:
+import scala.util.Try
+
+def formatSongUrl(songId: String): Try[String] =
+  Try(
+    require(songId.startsWith("track-"), "Invalid track ID format")
+    s"https://streaming.com/song/$$songId"
+  )
+[ERROR] Failed to parse snippet f071cf39-197f-4048-8762-47884f9f4289:
+sealed trait TransactionError
+deficit: Int)
+case object InvalidTransactionAmount extends TransactionError
+case class NotEnoughInventory(deficit: Int) extends TransactionError
+
+def reserveProduct(stock: Int, amount: Int): Either[TransactionError, Int] =
+  if amount <= 0 then Left(InvalidTransactionAmount)
+  else if stock >= amount then Right(stock - amount)
+  else Left(NotEnoughInventory(amount - stock))
+
+[ERROR] Failed to parse snippet d76fbac1-d536-4286-b29a-d40d22400757:
+import scala.util.Try case class Route(segments: List[String])
+def tryOptimizeRoute(segments: List[String]): scala.util.Try[Route] = scala.util.Try(Route(segments).copy(segments = segments.reverse))
+[ERROR] Failed to parse snippet b81224b8-a5c2-44d6-b293-dbc0b6da1c46:
+trait Recommender
+case class NotEnoughRecipes extends Throwable
+
+def selectRandomRecipe(recipes: List[Recipe]): scala.util.Try[Recipe] =
+  scala.util.Try(recipes(scala.util.Random.nextInt(recipes.length)))
+    .recoverWith { case _: Throwable => scala.util.Failure(NotEnoughRecipes()) }
+[INFO] Successfully tokenized 5127 out of 5137 snippets
+[INFO] Built vocabulary with 3915 tokens
+[INFO] Saved 5127 tokenized snippets to ./results/ast_tokens.jsonl
+[INFO] Saved vocabulary with 3915 tokens to ./results/vocab.json
+[INFO] === Processing complete ===
+[INFO] Total snippets processed: 5127
+[INFO] Vocabulary size: 3915

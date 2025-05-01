@@ -1,0 +1,79 @@
+generic: |
+  General Instructions (Apply to all snippet generation tasks):
+
+  1.  Role: You are an AI assistant generating Scala 3 code snippets.
+  2.  Language: Generate syntactically valid Scala 3 code.
+  3.  Quantity & Mix: Generate exactly $N snippets in total. Ensure an equal number of idiomatic (`isIdiomatic: true`) and non-idiomatic (`isIdiomatic: false`) snippets (i.e., exactly $N/2$ of each, assuming $N$ is even; if $N$ is odd, make the split as close as possible).
+  4.  Length: Each `codeSnippet` must be a maximum of 20 lines.
+  5.  Completeness: Each snippet should represent a self-contained concept relevant to $TOPIC$. It should be runnable or easily integrable into a larger program. Do NOT use the `???` operator; provide a concrete implementation.
+  6.  No Imports/Comments: Do NOT include `import` statements or any comments within the `codeSnippet` string.
+  7.  Naming Conventions: Use realistic, domain-appropriate variable, function, and class names that clearly reflect the specified $TOPIC. Crucially, AVOID generic placeholders like `foo`, `bar`, `x`, `y`, `a`, `b`, `MyClass`, `data`, `testVal`, `func1`, `process`, `handle`, etc. Names should be descriptive of the $TOPIC.
+  8.  Variety: Include a mix of relevant Scala structures (e.g., functions, methods within objects/classes, standalone objects, case classes where appropriate) and varying levels of complexity suitable for the concept being illustrated.
+  9.  Output Format: Return results STRICTLY as a single JSON array. Each object in the array MUST have exactly two keys:
+      "codeSnippet": A string containing the Scala 3 code snippet.
+      "isIdiomatic": A boolean value (`true` for idiomatic, `false` for non-idiomatic).
+      Example JSON object structure: `{ "codeSnippet": "...", "isIdiomatic": true }`
+
+null_checks: |
+  Task: Generate Scala 3 Null Handling Snippets
+
+  Generate $N Scala 3 code snippets demonstrating null handling related to the specific domain of $TOPIC.
+
+  Adhere strictly to the General Instructions provided.
+
+  Topic-Specific Requirements:
+
+  Non-Idiomatic (`isIdiomatic: false`):
+      Focus on explicit `if (variable == null)` or `if (variable != null)` checks.
+      Show assignment or return of `null` to represent absence or failure.
+      Illustrate interaction with hypothetical Java methods (or methods mimicking Java style) that might return `null`. Use $TOPIC-relevant names.
+  Idiomatic (`isIdiomatic: true`):
+      Focus on using `Option`, `Some`, `None` instead of `null`.
+      Demonstrate standard `Option` methods: `map`, `flatMap`, `getOrElse`, `fold`, `filter`, `exists`, `forall`.
+      Show safe wrapping of potentially `null` values (e.g., from simulated Java interop) into `Option` using `Option(...)`. Use $TOPIC-relevant names.
+
+  Output: A JSON array containing $N$ objects as specified in the General Instructions.
+
+classes_for_data: |
+  Task: Generate Scala 3 Data Class Snippets
+
+  Generate $N Scala 3 code snippets demonstrating data class implementation related to the specific domain of $TOPIC.
+
+  Adhere strictly to the General Instructions provided.
+
+  Topic-Specific Requirements:
+
+  Non-Idiomatic (`isIdiomatic: false`):
+      Implement data structures using regular `class`. Use $TOPIC-relevant class and field names.
+      Explicitly show manual implementations of `equals` and `hashCode` methods (or omit them, highlighting the lack of structural equality). A manual `toString` can also be included.
+      If pattern matching is needed, show the definition of a custom `unapply` method in a companion object.
+  Idiomatic (`isIdiomatic: true`):
+      Implement equivalent data structures using `case class`. Use $TOPIC-relevant class and field names.
+      Rely entirely on the automatically generated `equals`, `hashCode`, `toString`, and `copy` methods (do not implement them manually).
+      Demonstrate the natural pattern matching capabilities provided by case classes.
+      Optionally, use Scala 3 `enum` types with `case` members if appropriate for modeling variations within the $TOPIC.
+
+  Output: A JSON array containing $N$ objects as specified in the General Instructions.
+
+throws: |
+  Task: Generate Scala 3 Error Handling Snippets
+
+  Generate $N Scala 3 code snippets demonstrating error handling approaches related to the specific domain of $TOPIC.
+
+  Adhere strictly to the General Instructions provided.
+
+  Topic-Specific Requirements:
+
+  Non-Idiomatic (`isIdiomatic: false`):
+      Use `throw new SpecificException(...)` for error conditions, even potentially recoverable ones. Use standard or custom exception types relevant to $TOPIC.
+      Employ `try`/`catch` blocks as the primary mechanism for handling errors.
+      Show functions where exceptions are the main way to signal failure (implicit propagation, unclear error contract in the signature).
+      Include examples where throwing code is simply wrapped in `try`/`catch` for basic recovery or logging.
+  Idiomatic (`isIdiomatic: true`):
+      Use functional error handling types: `Either[ErrorType, SuccessType]`, `Option[SuccessType]`, or `Try[SuccessType]`.
+      Represent errors as values: e.g., custom case classes/objects extending a sealed trait `ErrorType` (relevant to $TOPIC), strings in `Left`, or `Throwable` captured in `Failure`.
+      Define functions with explicit error contracts in their return types (e.g., `def processItem(...): Either[ItemProcessingError, ProcessedItem]`).
+      Demonstrate safe, functional composition of operations that might fail (e.g., using `flatMap`, `map`, `recover`, `fold` on `Either` or `Try`).
+      Show the use of `Try {...}` constructor as functional alternative to `try`/`catch` blocks.
+
+  Output: A JSON array containing $N$ objects as specified in the General Instructions.

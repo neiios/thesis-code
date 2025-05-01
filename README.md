@@ -6,21 +6,20 @@
 
 ```sh
 # Generate dataset
-pushd generator && scala run generateDataset.scala && popd
+scala run generate.sc -- \
+  --model openai/gpt-4.1 \
+  --samples-per-request 20 \
+  --snippets-per-topic 40 \
+  --topics-file ./topics.json \
+  --schema-file ./schema.json \
+  --prompts-file ./prompts.yaml \
+  --output-dir ./results
+
+# Merged separate datasets
+cat ./results/classes_for_data_snippets.jsonl  ./results/null_checks_snippets.jsonl  ./results/throws_snippets.jsonl > ./results/raw_full.jsonl
 
 # Tokenize snippets
-pushd ast-tokenizer && uv run tokenize_snippets.py \
-  -i ../dataset/raw_full.jsonl \
-  -o ../dataset/tokenized_full.jsonl && popd
-
-# Create vocabulary
-pushd vocab && uv run create_vocab.py \
-  -i ../dataset/tokenized_full.jsonl \
-  -o ../dataset/vocab.json && popd
-
-# Train LSTM
-pushd lstm && python train_lstm.py \
-  -i ../results/tokenized_full.jsonl \
-  -v ../results/vocab.json \
-  -o ./trained_model && popd
+scala run ./src/tokenize.sc -- \
+  --input ./results/raw_full.jsonl \
+  --output-dir ./results
 ```
