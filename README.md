@@ -6,13 +6,13 @@
 
 ```sh
 # Generate dataset
-scala run generate.sc -- \
+scala run ./src/generate.sc -- \
   --model openai/gpt-4.1 \
   --samples-per-request 20 \
   --snippets-per-topic 40 \
-  --topics-file ./topics.json \
-  --schema-file ./schema.json \
-  --prompts-file ./prompts.yaml \
+  --topics-file ./src/topics.json \
+  --schema-file ./src/schema.json \
+  --prompts-file ./src/prompts.yaml \
   --output-dir ./results
 
 # Merged separate datasets
