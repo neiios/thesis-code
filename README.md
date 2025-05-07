@@ -22,4 +22,10 @@ cat ./results/classes_for_data_snippets.jsonl  ./results/null_checks_snippets.js
 scala run ./src/tokenize.sc -- \
   --input ./results/raw_full.jsonl \
   --output-dir ./results
+
+# Optimize CNN
+uv run -m src.cnn.optimize -i results/processed_full.jsonl -o results/lstm_optimized --max-trials 20 --overwrite
+
+# Optimize LSTM
+uv run -m src.lstm.optimize -i results/processed_full.jsonl -o results/lstm_optimized --max-trials 20 --overwrite
 ```
