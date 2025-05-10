@@ -1,4 +1,4 @@
-# Usage
+# Program usage
 
 1. Create a `.env` file in the root of the project based on the example file.
 
@@ -31,4 +31,27 @@ uv run -m src.cnn.optimize -i ./results/processed_full.jsonl -o ./results/lstm_o
 
 # Optimize LSTM
 uv run -m src.lstm.optimize -i ./results/processed_full.jsonl -o ./results/lstm_optimized --max-trials 20 --overwrite
+```
+
+# Connecting to MIF HPC
+
+```sh
+# Connect to gpu
+srun -p gpu --gres gpu --pty $SHELL
+
+# Do undproductive things
+wget http://launchpadlibrarian.net/589203768/libfakeroot_1.28-1ubuntu1_amd64.deb
+dpkg-deb -R libfakeroot_1.28-1ubuntu1_amd64.deb libfakeroot_1.28
+singularity build --sandbox /tmp/arch docker://archlinux
+fakeroot -l /scratch/lustre/home/$(whoami)/libfakeroot_1.28/usr/lib/x86_64-linux-gnu/libfakeroot/libfakeroot-sysv.so singularity shell -w /tmp/arch
+pacman -Sy fastfetch && fastfetch
+
+# Now install what you need to run your stuff and actually start being productive...
+```
+
+# Accessing files from HPC
+
+```sh
+# Use sshfs to mount the folder from hpc locally
+sshfs user6969@hpc.mif.vu.lt:/scratch/lustre/home/user6969/thesis-code thesis-code-hpc
 ```
