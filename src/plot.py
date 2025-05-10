@@ -5,19 +5,25 @@ import numpy as np
 import matplotlib.pyplot as plt
 import pandas as pd
 import seaborn as sns
-from utils import create_vocabulary, load_data, get_adjusted_labels, save_vocabulary
+from matplotlib.ticker import MaxNLocator
+from src.utils import create_vocabulary, load_data, get_adjusted_labels, save_vocabulary
+
+sns.set_theme(style="ticks", palette="colorblind")
 
 
 def plot_snippet_length_distribution(sequence_lengths: list[int], output_path: Path):
     plt.figure(figsize=(10, 6))
-    sns.histplot(sequence_lengths, bins=50, kde=True)
-    plt.title("Distribution of Code Snippet Lengths (Number of Tokens)")
-    plt.xlabel("Number of Tokens")
-    plt.ylabel("Frequency")
+    ax = sns.histplot(sequence_lengths, bins=50, kde=True)
+    plt.xlabel("Žetonų skaičius")
+    plt.ylabel("Fragmentų skaičius")
+
+    ax.xaxis.set_major_locator(MaxNLocator(integer=True))
+    ax.yaxis.set_major_locator(MaxNLocator(integer=True))
+
     mean_len = np.mean(sequence_lengths)
     median_len = np.median(sequence_lengths)
-    plt.axvline(mean_len, color="r", linestyle="--", label=f"Mean: {mean_len:.2f}")
-    plt.axvline(median_len, color="g", linestyle=":", label=f"Median: {median_len:.2f}")
+    plt.axvline(float(mean_len), color="r", linestyle="--", label=f"Vidurkis: {mean_len:.2f}")
+    plt.axvline(float(median_len), color="g", linestyle=":", label=f"Mediana: {median_len:.2f}")
     plt.legend()
     plt.tight_layout()
     plt.savefig(output_path)
@@ -27,10 +33,12 @@ def plot_snippet_length_distribution(sequence_lengths: list[int], output_path: P
 
 def plot_class_distribution(adjusted_labels: list[str], output_path: Path):
     plt.figure(figsize=(10, 6))
-    sns.countplot(y=adjusted_labels, order=pd.Series(adjusted_labels).value_counts().index)
-    plt.title("Distribution of Training Classes (including 'no_issue')")
-    plt.xlabel("Count")
-    plt.ylabel("Class")
+    ax = sns.countplot(y=adjusted_labels, order=pd.Series(adjusted_labels).value_counts().index)
+    plt.xlabel("Fragmentų skaičius")
+    plt.ylabel("Klasė")
+
+    ax.xaxis.set_major_locator(MaxNLocator(integer=True))
+
     plt.tight_layout()
     plt.savefig(output_path)
     plt.close()
@@ -40,9 +48,8 @@ def plot_class_distribution(adjusted_labels: list[str], output_path: Path):
 def plot_idiomaticity_distribution(is_idiomatic_list: list[bool], output_path: Path):
     plt.figure(figsize=(6, 6))
     counts = pd.Series(is_idiomatic_list).value_counts()
-    labels = ["Idiomatic" if idx else "Non-Idiomatic" for idx in counts.index]
+    labels = ["Idiomatiškas" if idx else "Neidiomatiškas" for idx in counts.index]
     plt.pie(counts, labels=labels, autopct="%1.1f%%", startangle=90)
-    plt.title("Distribution of Idiomatic vs. Non-Idiomatic Snippets")
     plt.tight_layout()
     plt.savefig(output_path)
     plt.close()

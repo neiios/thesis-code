@@ -7,7 +7,9 @@ from keras.api.layers import Input, Embedding, LSTM, Dense, Dropout, Bidirection
 import keras_tuner as kt
 import matplotlib.pyplot as plt
 import numpy as np
-import scienceplots
+import seaborn as sns
+import pandas as pd
+from matplotlib.ticker import MaxNLocator
 
 from src.utils import (
     create_vocabulary,
@@ -18,12 +20,12 @@ from src.utils import (
     MAX_SEQ_LENGTH,
 )
 
-plt.style.use(["science", "notebook"])
-
 BATCH_SIZE = 32
 EPOCHS = 20
 TEST_SIZE = 0.1
 VALIDATION_SIZE = 0.2
+
+sns.set_theme(style="ticks", palette="colorblind")
 
 
 def build_lstm_model_tunable(hp, vocab_size: int, num_classes: int) -> keras.Model:
@@ -74,7 +76,7 @@ def plot_optimization_results(tuner, output_dir: Path):
     hp_names = [name for name in best_hps.values.keys()]
 
     for i, hp_name in enumerate(hp_names):
-        plt.subplot(3, 3, i + 1) if i < 9 else plt.figure(figsize=(6, 4))
+        ax = plt.subplot(3, 3, i + 1) if i < 9 else plt.figure(figsize=(6, 4))
         values = []
         scores = []
 
@@ -89,28 +91,30 @@ def plot_optimization_results(tuner, output_dir: Path):
         value_score_pairs = sorted(zip(values, scores), key=lambda x: x[0])
         values, scores = zip(*value_score_pairs) if value_score_pairs else ([], [])
 
-        if hp_name == "use_bidirectional":  # Boolean parameter
-            categories = ["False", "True"]
-            plt.bar(
-                categories,
-                [
-                    np.mean([s for v, s in zip(values, scores) if not v]) if False in values else 0,
-                    np.mean([s for v, s in zip(values, scores) if v]) if True in values else 0,
-                ],
-            )
+        if hp_name == "use_bidirectional":
+            data_dict = {"category": [], "score": []}
+            if False in values:
+                data_dict["category"].append("False")
+                data_dict["score"].append(np.mean([s for v, s in zip(values, scores) if not v]))
+            if True in values:
+                data_dict["category"].append("True")
+                data_dict["score"].append(np.mean([s for v, s in zip(values, scores) if v]))
+            ax = sns.barplot(x="category", y="score", data=pd.DataFrame(data_dict))
         else:
-            plt.scatter(values, scores, alpha=0.7, s=50)
+            ax = sns.scatterplot(x=values, y=scores, alpha=0.7, s=50)
+            if hp_name in ["embedding_dim", "lstm_units_1", "lstm_units_2", "cnn_num_filters"]:
+                ax.xaxis.set_major_locator(MaxNLocator(integer=True))
+
             if len(values) > 2:
                 try:
-                    z = np.polyfit(values, scores, 1)
-                    p = np.poly1d(z)
-                    plt.plot(sorted(values), p(sorted(values)), "r--", alpha=0.7)
+                    sns.regplot(
+                        x=np.array(values), y=np.array(scores), scatter=False, color="red", line_kws={"linestyle": "--"}
+                    )
                 except Exception as e:
                     print(f"Could not fit trend line for {hp_name}: {e}")
 
-        plt.title(f"Effect of {hp_name}")
         plt.xlabel(hp_name)
-        plt.ylabel("Validation Accuracy")
+        plt.ylabel("Validacijos tikslumo vertė")
         plt.tight_layout()
 
     plt.savefig(output_dir / "hyperparameter_importance.png")
@@ -120,17 +124,26 @@ def plot_optimization_results(tuner, output_dir: Path):
     trial_scores = [trial.score for trial in tuner.oracle.trials.values() if trial.score is not None]
     trial_ids = range(len(trial_scores))
 
-    plt.scatter(trial_ids, trial_scores, alpha=0.7, s=50)
-    plt.title("Hyperparameter Search Progress")
-    plt.xlabel("Trial")
-    plt.ylabel("Validation Accuracy")
+    ax = sns.scatterplot(x=trial_ids, y=trial_scores, alpha=0.7, s=50)
+    plt.xlabel("Bandymas")
+    plt.ylabel("Validacijos tikslumo vertė")
+
+    ax.xaxis.set_major_locator(MaxNLocator(integer=True))
 
     if len(trial_scores) > 2:
         try:
             window_size = min(5, len(trial_scores) // 2)
             if window_size > 0:
-                smoothed = np.convolve(trial_scores, np.ones(window_size) / window_size, mode="valid")
-                plt.plot(range(window_size - 1, len(trial_scores)), smoothed, "r-", alpha=0.7)
+                df = pd.DataFrame({"trial_ids": trial_ids, "trial_scores": trial_scores})
+                df["smoothed_scores"] = (
+                    df["trial_scores"].rolling(window=window_size, center=True, min_periods=1).mean()
+                )
+                sns.lineplot(
+                    x=df["trial_ids"][window_size - 1 :],
+                    y=df["smoothed_scores"][window_size - 1 :],
+                    color="red",
+                    alpha=0.7,
+                )
         except Exception as e:
             print(f"Could not create trend line for trials: {e}")
 
@@ -243,7 +256,10 @@ def main(args):
         from keras.api.utils import plot_model
 
         plot_model(
-            best_model, to_file=output_dir / "optimized_model_architecture.png", show_shapes=True, show_layer_names=True
+            best_model,
+            to_file=str(output_dir / "optimized_model_architecture.png"),
+            show_shapes=True,
+            show_layer_names=True,
         )
         print(f"Model architecture diagram saved to {output_dir / 'optimized_model_architecture.png'}")
     except ImportError:

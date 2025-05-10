@@ -8,3 +8,6 @@ __pycache__
 .direnv
 node_modules
 .idea
+results
+!results/raw_full.jsonl
+!results/processed_full.jsonl

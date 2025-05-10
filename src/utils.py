@@ -5,10 +5,14 @@ import keras
 import numpy as np
 from sklearn.preprocessing import LabelEncoder
 import matplotlib.pyplot as plt
+import seaborn as sns
+from matplotlib.ticker import MaxNLocator
 
 PAD_TOKEN = "<PAD>"
 UNK_TOKEN = "<UNK>"
 MAX_SEQ_LENGTH = 500
+
+sns.set_theme(style="ticks", palette="colorblind")
 
 
 def create_vocabulary(data_path: Path) -> Dict[str, int]:
@@ -66,21 +70,24 @@ def plot_training_history(history, output_path: Path):
     try:
         plt.figure(figsize=(12, 5))
 
-        plt.subplot(1, 2, 1)
-        plt.plot(history.history["accuracy"], label="Train Accuracy")
-        plt.plot(history.history["val_accuracy"], label="Validation Accuracy")
-        plt.title("Model Accuracy")
-        plt.ylabel("Accuracy")
-        plt.xlabel("Epoch")
+        ax1 = plt.subplot(1, 2, 1)
+        epochs = range(1, len(history.history["accuracy"]) + 1)
+        sns.lineplot(x=epochs, y=history.history["accuracy"], label="Mokymo tikslumas")
+        sns.lineplot(x=epochs, y=history.history["val_accuracy"], label="Validacijos tikslumas")
+        plt.ylabel("Tikslumas")
+        plt.xlabel("Epocha")
         plt.legend(loc="lower right")
 
-        plt.subplot(1, 2, 2)
-        plt.plot(history.history["loss"], label="Train Loss")
-        plt.plot(history.history["val_loss"], label="Validation Loss")
-        plt.title("Model Loss")
-        plt.ylabel("Loss")
-        plt.xlabel("Epoch")
+        ax1.xaxis.set_major_locator(MaxNLocator(integer=True))
+
+        ax2 = plt.subplot(1, 2, 2)
+        sns.lineplot(x=epochs, y=history.history["loss"], label="Mokymo nuostoliai")
+        sns.lineplot(x=epochs, y=history.history["val_loss"], label="Validacijos nuostoliai")
+        plt.ylabel("Nuostoliai")
+        plt.xlabel("Epocha")
         plt.legend(loc="upper right")
+
+        ax2.xaxis.set_major_locator(MaxNLocator(integer=True))
 
         plt.tight_layout()
         plt.savefig(output_path)

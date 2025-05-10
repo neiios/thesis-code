@@ -7,7 +7,9 @@ from keras.api.layers import Input, Embedding, Conv1D, GlobalMaxPooling1D, Dense
 import keras_tuner as kt
 import matplotlib.pyplot as plt
 import numpy as np
-import scienceplots
+import seaborn as sns
+import pandas as pd
+from matplotlib.ticker import MaxNLocator
 
 from src.utils import (
     create_vocabulary,
@@ -18,13 +20,13 @@ from src.utils import (
     MAX_SEQ_LENGTH,
 )
 
-plt.style.use(["science", "notebook"])
-
 BATCH_SIZE = 32
 EPOCHS = 20
 TEST_SIZE = 0.1
 VALIDATION_SIZE = 0.2
 CNN_FILTER_SIZES = [3, 4, 5]
+
+sns.set_theme(style="ticks", palette="colorblind")
 
 
 def build_cnn_model_tunable(hp, vocab_size: int, num_classes: int) -> keras.Model:
@@ -93,16 +95,15 @@ def plot_optimization_results(tuner, output_dir: Path):
         value_score_pairs = sorted(zip(values, scores), key=lambda x: x[0])
         values, scores = zip(*value_score_pairs) if value_score_pairs else ([], [])
 
-        plt.scatter(values, scores, alpha=0.7, s=50)
-        plt.title(f"Effect of {hp_name}")
+        sns.scatterplot(x=values, y=scores, alpha=0.7, s=50)
         plt.xlabel(hp_name)
-        plt.ylabel("Validation Accuracy")
+        plt.ylabel("Validacijos tikslumo vertė")
 
         if len(values) > 2:
             try:
-                z = np.polyfit(values, scores, 1)
-                p = np.poly1d(z)
-                plt.plot(sorted(values), p(sorted(values)), "r--", alpha=0.7)
+                sns.regplot(
+                    x=np.array(values), y=np.array(scores), scatter=False, color="red", line_kws={"linestyle": "--"}
+                )
             except Exception as e:
                 print(f"Could not fit trend line for {hp_name}: {e}")
 
@@ -114,17 +115,26 @@ def plot_optimization_results(tuner, output_dir: Path):
     trial_scores = [trial.score for trial in tuner.oracle.trials.values() if trial.score is not None]
     trial_ids = range(len(trial_scores))
 
-    plt.scatter(trial_ids, trial_scores, alpha=0.7, s=50)
-    plt.title("Hyperparameter Search Progress")
-    plt.xlabel("Trial")
-    plt.ylabel("Validation Accuracy")
+    ax = sns.scatterplot(x=trial_ids, y=trial_scores, alpha=0.7, s=50)
+    plt.xlabel("Bandymas")
+    plt.ylabel("Validacijos tikslumo vertė")
+
+    ax.xaxis.set_major_locator(MaxNLocator(integer=True))
 
     if len(trial_scores) > 2:
         try:
             window_size = min(5, len(trial_scores) // 2)
             if window_size > 0:
-                smoothed = np.convolve(trial_scores, np.ones(window_size) / window_size, mode="valid")
-                plt.plot(range(window_size - 1, len(trial_scores)), smoothed, "r-", alpha=0.7)
+                df = pd.DataFrame({"trial_ids": trial_ids, "trial_scores": trial_scores})
+                df["smoothed_scores"] = (
+                    df["trial_scores"].rolling(window=window_size, center=True, min_periods=1).mean()
+                )
+                sns.lineplot(
+                    x=df["trial_ids"][window_size - 1 :],
+                    y=df["smoothed_scores"][window_size - 1 :],
+                    color="red",
+                    alpha=0.7,
+                )
         except Exception as e:
             print(f"Could not create trend line for trials: {e}")
 
@@ -190,14 +200,12 @@ def main(args):
     print(f"CNN Filters: {best_hps.get('cnn_num_filters')}")
     print(f"Dropout Rate: {best_hps.get('dropout_rate')}")
     print(f"Learning Rate: {best_hps.get('learning_rate')}")
-    print(f"Filter Sizes: {CNN_FILTER_SIZES} (fixed)")
 
     best_hps_dict = {
         "embedding_dim": best_hps.get("embedding_dim"),
         "cnn_num_filters": best_hps.get("cnn_num_filters"),
         "dropout_rate": best_hps.get("dropout_rate"),
         "learning_rate": best_hps.get("learning_rate"),
-        "filter_sizes": CNN_FILTER_SIZES,
     }
 
     with open(output_dir / "best_hyperparameters.json", "w") as f:
@@ -233,7 +241,10 @@ def main(args):
         from keras.api.utils import plot_model
 
         plot_model(
-            best_model, to_file=output_dir / "optimized_model_architecture.png", show_shapes=True, show_layer_names=True
+            best_model,
+            to_file=str(output_dir / "optimized_model_architecture.png"),
+            show_shapes=True,
+            show_layer_names=True,
         )
         print(f"Model architecture diagram saved to {output_dir / 'optimized_model_architecture.png'}")
     except ImportError:

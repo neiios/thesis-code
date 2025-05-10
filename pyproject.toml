@@ -17,7 +17,6 @@ dependencies = [
     "seaborn>=0.13.2",
     "pydot>=3.0.4",
     "keras-tuner>=1.4.7",
-    "scienceplots>=2.1.1",
     "protobuf>=6.30.2",
     "grpcio>=1.71.0",
 ]
