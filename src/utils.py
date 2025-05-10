@@ -1,12 +1,16 @@
 import json
 from pathlib import Path
-from typing import Dict, List, Tuple
+from typing import Dict, List, Tuple, Callable, Set
 import keras
 import numpy as np
 from sklearn.preprocessing import LabelEncoder
 import matplotlib.pyplot as plt
 import seaborn as sns
+import pandas as pd
 from matplotlib.ticker import MaxNLocator
+import keras_tuner as kt
+from sklearn.model_selection import train_test_split
+from keras.api.utils import plot_model
 
 PAD_TOKEN = "<PAD>"
 UNK_TOKEN = "<UNK>"
@@ -17,7 +21,7 @@ sns.set_theme(style="ticks", palette="colorblind")
 
 def create_vocabulary(data_path: Path) -> Dict[str, int]:
     print(f"Creating vocabulary from: {data_path}")
-    token_set = set()
+    token_set: Set[str] = set()
 
     with open(data_path, "r", encoding="utf-8") as f:
         for line in f:
@@ -26,7 +30,7 @@ def create_vocabulary(data_path: Path) -> Dict[str, int]:
             if tokens:
                 token_set.update(tokens)
 
-    token_to_id = {PAD_TOKEN: 0, UNK_TOKEN: 1}
+    token_to_id: Dict[str, int] = {PAD_TOKEN: 0, UNK_TOKEN: 1}
     for i, token in enumerate(sorted(token_set)):
         token_to_id[token] = i + 2
 
@@ -54,7 +58,7 @@ def preprocess_data(
     y_encoded = label_encoder.fit_transform(adjusted_labels)
     class_names = list(label_encoder.classes_)
 
-    y = np.eye(len(class_names))[y_encoded]
+    y = np.eye(len(class_names))[np.array(y_encoded)]
 
     print(f"Data shapes: X={X.shape}, y={y.shape}")
     print(f"Classes: {class_names}")
@@ -62,7 +66,7 @@ def preprocess_data(
     return X, y, class_names, adjusted_labels
 
 
-def plot_training_history(history, output_path: Path):
+def plot_training_history(history, output_path: Path) -> None:
     if history is None or not hasattr(history, "history"):
         print("No training history found to plot.")
         return
@@ -140,7 +144,195 @@ def load_vocabulary(vocab_path: Path) -> Dict[str, int]:
     return token_to_id
 
 
-def save_vocabulary(token_to_id: Dict[str, int], output_path: Path):
+def save_vocabulary(token_to_id: Dict[str, int], output_path: Path) -> None:
     with open(output_path, "w") as f:
         json.dump({str(k): v for k, v in token_to_id.items()}, f)
     print(f"Vocabulary saved to {output_path}")
+
+
+def plot_optimization_results(tuner: kt.Tuner, output_dir: Path) -> None:
+    best_hps = tuner.get_best_hyperparameters(1)[0]
+    top_k = 10
+    trials = tuner.oracle.get_best_trials(top_k)
+    plt.figure(figsize=(12, 10))
+    hp_names = [name for name in best_hps.values.keys()]
+
+    for i, hp_name in enumerate(hp_names):
+        ax = plt.subplot(3, 3, i + 1) if i < 9 else plt.figure(figsize=(6, 4))
+        values = []
+        scores = []
+
+        for trial in trials:
+            if hp_name not in trial.hyperparameters.values:
+                continue
+            value = trial.hyperparameters.values[hp_name]
+            score = trial.score
+            values.append(value)
+            scores.append(score)
+
+        value_score_pairs = sorted(zip(values, scores), key=lambda x: x[0])
+        values, scores = zip(*value_score_pairs) if value_score_pairs else ([], [])
+
+        if hp_name in ["use_bidirectional"]:
+            data_dict = {"category": [], "score": []}
+            if False in values:
+                data_dict["category"].append("False")
+                data_dict["score"].append(np.mean([s for v, s in zip(values, scores) if not v]))
+            if True in values:
+                data_dict["category"].append("True")
+                data_dict["score"].append(np.mean([s for v, s in zip(values, scores) if v]))
+            ax = sns.barplot(x="category", y="score", data=pd.DataFrame(data_dict))
+        else:
+            ax = sns.scatterplot(x=values, y=scores, alpha=0.7, s=50)
+            if hp_name in ["embedding_dim", "lstm_units_1", "lstm_units_2", "cnn_num_filters"]:
+                ax.xaxis.set_major_locator(MaxNLocator(integer=True))
+
+            if len(values) > 2:
+                try:
+                    sns.regplot(
+                        x=np.array(values), y=np.array(scores), scatter=False, color="red", line_kws={"linestyle": "--"}
+                    )
+                except Exception as e:
+                    print(f"Could not fit trend line for {hp_name}: {e}")
+
+        plt.xlabel(hp_name)
+        plt.ylabel("Validacijos tikslumo vertė")
+        plt.tight_layout()
+
+    plt.savefig(output_dir / "hyperparameter_importance.png")
+    plt.close()
+
+    plt.figure(figsize=(10, 6))
+    trial_scores = [trial.score for trial in tuner.oracle.trials.values() if trial.score is not None]
+    trial_ids = range(len(trial_scores))
+
+    ax = sns.scatterplot(x=trial_ids, y=trial_scores, alpha=0.7, s=50)
+    plt.xlabel("Bandymas")
+    plt.ylabel("Validacijos tikslumo vertė")
+
+    ax.xaxis.set_major_locator(MaxNLocator(integer=True))
+
+    if len(trial_scores) > 2:
+        try:
+            window_size = min(5, len(trial_scores) // 2)
+            if window_size > 0:
+                df = pd.DataFrame({"trial_ids": trial_ids, "trial_scores": trial_scores})
+                df["smoothed_scores"] = (
+                    df["trial_scores"].rolling(window=window_size, center=True, min_periods=1).mean()
+                )
+                sns.lineplot(
+                    x=df["trial_ids"][window_size - 1 :],
+                    y=df["smoothed_scores"][window_size - 1 :],
+                    color="red",
+                    alpha=0.7,
+                )
+        except Exception as e:
+            print(f"Could not create trend line for trials: {e}")
+
+    plt.tight_layout()
+    plt.savefig(output_dir / "optimization_progress.png")
+    plt.close()
+
+
+def run_hyperparameter_optimization(
+    build_model_fn: Callable[[kt.HyperParameters, int, int], keras.Model],
+    X: np.ndarray,
+    y: np.ndarray,
+    vocab_size: int,
+    num_classes: int,
+    output_dir: Path,
+    project_name: str,
+    max_trials: int,
+    overwrite: bool = False,
+    batch_size: int = 32,
+    epochs: int = 20,
+    test_size: float = 0.1,
+    validation_size: float = 0.2,
+) -> Tuple[keras.Model, kt.HyperParameters, List[float], kt.Tuner, np.ndarray, np.ndarray]:
+    output_dir.mkdir(parents=True, exist_ok=True)
+    tuner_dir = output_dir / "tuner"
+    tuner_dir.mkdir(exist_ok=True)
+
+    X_temp, X_test, y_temp, y_test = train_test_split(X, y, test_size=test_size, random_state=42, stratify=y)
+    X_train, X_val, y_train, y_val = train_test_split(
+        X_temp, y_temp, test_size=validation_size, random_state=42, stratify=y_temp
+    )
+
+    print(f"Training set: {X_train.shape[0]} samples ({X_train.shape[0] / X.shape[0]:.1%} of data)")
+    print(f"Validation set: {X_val.shape[0]} samples ({X_val.shape[0] / X.shape[0]:.1%} of data)")
+    print(f"Test set: {X_test.shape[0]} samples ({X_test.shape[0] / X.shape[0]:.1%} of data)")
+
+    tuner = kt.BayesianOptimization(
+        lambda hp: build_model_fn(hp, vocab_size, num_classes),
+        objective="val_accuracy",
+        max_trials=max_trials,
+        num_initial_points=2,
+        directory=str(tuner_dir),
+        project_name=project_name,
+        overwrite=overwrite,
+    )
+
+    tuner.search_space_summary()
+    early_stopping = keras.callbacks.EarlyStopping(monitor="val_loss", patience=5, restore_best_weights=True)
+
+    print("\n--- Starting Hyperparameter Tuning with Bayesian Optimization ---")
+    tuner.search(
+        X_train,
+        y_train,
+        epochs=epochs,
+        validation_data=(X_val, y_val),
+        callbacks=[early_stopping],
+        batch_size=batch_size,
+        verbose=1,
+    )
+
+    best_hps = tuner.get_best_hyperparameters(1)[0]
+    best_model = tuner.get_best_models(1)[0]
+
+    print("\n--- Evaluating Best Model ---")
+    test_results = best_model.evaluate(X_test, y_test, verbose=1)
+
+    return best_model, best_hps, test_results, tuner, X_test, y_test
+
+
+def save_optimization_results(
+    best_model: keras.Model,
+    best_hps: kt.HyperParameters,
+    test_results: List[float],
+    tuner: kt.Tuner,
+    output_dir: Path,
+    model_type: str,
+) -> None:
+    best_hps_dict = {name: best_hps.get(name) for name in best_hps.values}
+
+    with open(output_dir / "best_hyperparameters.json", "w") as f:
+        json.dump(best_hps_dict, f, indent=2)
+    print(f"Best hyperparameters saved to {output_dir / 'best_hyperparameters.json'}")
+
+    print("Generating hyperparameter optimization visualizations...")
+    plot_optimization_results(tuner, output_dir)
+
+    eval_results = {
+        "test": {
+            "loss": float(test_results[0]),
+            "accuracy": float(test_results[1]),
+            "precision": float(test_results[2]) if len(test_results) > 2 else None,
+            "recall": float(test_results[3]) if len(test_results) > 3 else None,
+        },
+    }
+
+    with open(output_dir / "optimization_results.json", "w") as f:
+        json.dump(eval_results, f, indent=2)
+    print(f"Evaluation results saved to {output_dir / 'optimization_results.json'}")
+
+    model_path = output_dir / "optimized_model.keras"
+    best_model.save(model_path)
+    print(f"Best model saved to: {model_path}")
+
+    plot_model(
+        best_model,
+        to_file=str(output_dir / "optimized_model_architecture.png"),
+        show_shapes=True,
+        show_layer_names=True,
+    )
+    print(f"Model architecture diagram saved to {output_dir / 'optimized_model_architecture.png'}")
