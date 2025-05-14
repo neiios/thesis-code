@@ -104,6 +104,9 @@ def main(args):
         tuner=tuner,
         output_dir=output_dir,
         model_type="lstm",
+        X_test=X_test,
+        y_test=y_test,
+        class_names=class_names,
     )
 
 

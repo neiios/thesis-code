@@ -21,6 +21,7 @@
             uv
             ruff
             alejandra
+            graphviz
           ];
 
           shellHook = ''

@@ -11,6 +11,7 @@ from matplotlib.ticker import MaxNLocator
 import keras_tuner as kt
 from sklearn.model_selection import train_test_split
 from keras.api.utils import plot_model
+from sklearn.metrics import confusion_matrix, ConfusionMatrixDisplay
 
 PAD_TOKEN = "<PAD>"
 UNK_TOKEN = "<UNK>"
@@ -158,7 +159,7 @@ def plot_optimization_results(tuner: kt.Tuner, output_dir: Path) -> None:
     hp_names = [name for name in best_hps.values.keys()]
 
     for i, hp_name in enumerate(hp_names):
-        ax = plt.subplot(3, 3, i + 1) if i < 9 else plt.figure(figsize=(6, 4))
+        ax = plt.subplot(2, 2, i + 1) if i < 4 else plt.figure(figsize=(3, 3))
         values = []
         scores = []
 
@@ -302,6 +303,9 @@ def save_optimization_results(
     tuner: kt.Tuner,
     output_dir: Path,
     model_type: str,
+    X_test: np.ndarray | None = None,
+    y_test: np.ndarray | None = None,
+    class_names: List[str] | None = None,
 ) -> None:
     best_hps_dict = {name: best_hps.get(name) for name in best_hps.values}
 
@@ -321,6 +325,10 @@ def save_optimization_results(
         },
     }
 
+    if X_test is not None and y_test is not None and class_names is not None:
+        print("Generating confusion matrices...")
+        plot_confusion_matrices(best_model, X_test, y_test, class_names, output_dir)
+
     with open(output_dir / "optimization_results.json", "w") as f:
         json.dump(eval_results, f, indent=2)
     print(f"Evaluation results saved to {output_dir / 'optimization_results.json'}")
@@ -336,3 +344,43 @@ def save_optimization_results(
         show_layer_names=True,
     )
     print(f"Model architecture diagram saved to {output_dir / 'optimized_model_architecture.png'}")
+
+
+def plot_confusion_matrices(
+    model: keras.Model, X_test: np.ndarray, y_test: np.ndarray, class_names: List[str], output_dir: Path
+) -> None:
+    y_pred_probs = model.predict(X_test)
+    y_pred = np.argmax(y_pred_probs, axis=1)
+    y_true = np.argmax(y_test, axis=1)
+
+    cm_dir = output_dir / "confusion_matrices"
+    cm_dir.mkdir(exist_ok=True)
+
+    plt.figure(figsize=(10, 8))
+    cm = confusion_matrix(y_true, y_pred)
+    disp = ConfusionMatrixDisplay(confusion_matrix=cm, display_labels=class_names)
+    disp.plot(cmap="Blues", values_format="d", ax=plt.gca())
+    plt.xlabel("Prognozuojama klasė")
+    plt.ylabel("Tikroji klasė")
+    plt.tight_layout()
+    plt.savefig(cm_dir / "confusion_matrix_overall.png")
+    plt.close()
+
+    for i, class_name in enumerate(class_names):
+        plt.figure(figsize=(8, 6))
+
+        y_true_binary = (y_true == i).astype(int)
+        y_pred_binary = (y_pred == i).astype(int)
+
+        cm_binary = confusion_matrix(y_true_binary, y_pred_binary)
+        disp = ConfusionMatrixDisplay(confusion_matrix=cm_binary, display_labels=[f"Ne {class_name}", class_name])
+        disp.plot(cmap="Blues", values_format="d", ax=plt.gca())
+
+        plt.xlabel("Prognozuojama klasė")
+        plt.ylabel("Tikroji klasė")
+
+        plt.tight_layout()
+        plt.savefig(cm_dir / f"confusion_matrix_{class_name}.png")
+        plt.close()
+
+    print(f"Confusion matrices saved to {cm_dir}")
