@@ -12,6 +12,7 @@ import keras_tuner as kt
 from sklearn.model_selection import train_test_split
 from keras.api.utils import plot_model
 from sklearn.metrics import confusion_matrix, ConfusionMatrixDisplay
+from sklearn.metrics import roc_curve, auc
 
 PAD_TOKEN = "<PAD>"
 UNK_TOKEN = "<UNK>"
@@ -328,6 +329,8 @@ def save_optimization_results(
     if X_test is not None and y_test is not None and class_names is not None:
         print("Generating confusion matrices...")
         plot_confusion_matrices(best_model, X_test, y_test, class_names, output_dir)
+        print("Generating ROC curves...")
+        plot_roc_curves(best_model, X_test, y_test, class_names, output_dir)
 
     with open(output_dir / "optimization_results.json", "w") as f:
         json.dump(eval_results, f, indent=2)
@@ -383,4 +386,53 @@ def plot_confusion_matrices(
         plt.savefig(cm_dir / f"confusion_matrix_{class_name}.png")
         plt.close()
 
-    print(f"Confusion matrices saved to {cm_dir}")
+    print(f"Klasifikavimo lentelės išsaugotos: {cm_dir}")
+
+
+def plot_roc_curves(
+    model: keras.Model, X_test: np.ndarray, y_test: np.ndarray, class_names: List[str], output_dir: Path
+) -> None:
+    y_pred_probs = model.predict(X_test)
+
+    roc_dir = output_dir / "roc_curves"
+    roc_dir.mkdir(exist_ok=True)
+
+    plt.figure(figsize=(10, 8))
+
+    colors = plt.cm.get_cmap("tab10", len(class_names))
+
+    for i, class_name in enumerate(class_names):
+        fpr, tpr, _ = roc_curve(y_test[:, i], y_pred_probs[:, i])
+        roc_auc = auc(fpr, tpr)
+
+        plt.plot(fpr, tpr, color=colors(i), lw=2, label=f"{class_name} (plotas po kreive = {roc_auc:.2f})")
+
+    plt.plot([0, 1], [0, 1], "k--", lw=2)
+    plt.xlim([0.0, 1.0])
+    plt.ylim([0.0, 1.05])
+    plt.xlabel("Klaidingai teigiamų atvejų dažnis")
+    plt.ylabel("Jautrumas")
+    plt.legend(loc="lower right")
+    plt.tight_layout()
+    plt.savefig(roc_dir / "multiclass_roc_curve.png")
+    plt.close()
+
+    for i, class_name in enumerate(class_names):
+        plt.figure(figsize=(8, 6))
+
+        fpr, tpr, _ = roc_curve(y_test[:, i], y_pred_probs[:, i])
+        roc_auc = auc(fpr, tpr)
+
+        plt.plot(fpr, tpr, color="darkblue", lw=2, label=f"ROC kreivė (plotas po kreive = {roc_auc:.2f})")
+
+        plt.plot([0, 1], [0, 1], "k--", lw=2)
+        plt.xlim([0.0, 1.0])
+        plt.ylim([0.0, 1.05])
+        plt.xlabel("Klaidingai teigiamų atvejų dažnis")
+        plt.ylabel("Jautrumas")
+        plt.legend(loc="lower right")
+        plt.tight_layout()
+        plt.savefig(roc_dir / f"roc_curve_{class_name}.png")
+        plt.close()
+
+    print(f"ROC kreivės išsaugotos: {roc_dir}")
