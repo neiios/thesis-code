@@ -18,7 +18,7 @@ from src.utils import (
 )
 
 BATCH_SIZE = 32
-EPOCHS = 3
+EPOCHS = 20
 TEST_SIZE = 0.1
 VALIDATION_SIZE = 0.2
 CNN_FILTER_SIZES = [3, 4, 5]

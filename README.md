@@ -43,6 +43,7 @@ srun -p gpu --gres gpu --pty $SHELL
 wget http://launchpadlibrarian.net/589203768/libfakeroot_1.28-1ubuntu1_amd64.deb
 dpkg-deb -R libfakeroot_1.28-1ubuntu1_amd64.deb libfakeroot_1.28
 singularity build --sandbox /tmp/arch docker://archlinux
+mkdir -pv /tmp/arch/scratch
 fakeroot -l /scratch/lustre/home/$(whoami)/libfakeroot_1.28/usr/lib/x86_64-linux-gnu/libfakeroot/libfakeroot-sysv.so singularity shell -w /tmp/arch
 pacman -Sy fastfetch && fastfetch
 
