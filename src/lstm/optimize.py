@@ -53,6 +53,10 @@ def build_lstm_model_tunable(hp, vocab_size: int, num_classes: int) -> keras.Mod
 
     model = keras.Model(inputs=inputs, outputs=outputs)
 
+    print("\nModel Architecture:")
+    model.summary()
+    print(f"Total parameters: {model.count_params():,}")
+
     optimizer = keras.optimizers.Adam(learning_rate=learning_rate)
     model.compile(
         optimizer=optimizer,
@@ -113,6 +117,10 @@ def main(args):
     )
 
     best_model.save(output_dir / "optimized_model.keras", include_optimizer=True)
+
+    print("\n--- Best Model Information ---")
+    best_model.summary()
+    print(f"Total parameters: {best_model.count_params():,}")
 
     plot_confusion_matrices(
         model=best_model,

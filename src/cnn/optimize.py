@@ -57,6 +57,10 @@ def build_cnn_model_tunable(hp, vocab_size: int, num_classes: int) -> keras.Mode
     outputs = Dense(num_classes, activation="softmax", name="output")(dropout)
     model = keras.Model(inputs=inputs, outputs=outputs)
 
+    print("\nModel Architecture:")
+    model.summary()
+    print(f"Total parameters: {model.count_params():,}")
+
     optimizer = keras.optimizers.Adam(learning_rate=learning_rate)
     model.compile(
         optimizer=optimizer,
@@ -102,6 +106,10 @@ def main(args):
 
     best_model = build_cnn_model_tunable(best_hps, len(token_to_id), len(class_names))
     best_model.set_weights(best_model_from_tuner.get_weights())
+
+    print("\n--- Best Model Information ---")
+    best_model.summary()
+    print(f"Total parameters: {best_model.count_params():,}")
 
     save_optimization_results(
         model=best_model,

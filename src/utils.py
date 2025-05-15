@@ -190,7 +190,7 @@ def plot_confusion_matrices(
     cm_dir = out_dir / "confusion_matrices"
     cm_dir.mkdir(exist_ok=True)
 
-    plt.figure(figsize=(10, 8))
+    plt.figure(figsize=(12, 8))
     ConfusionMatrixDisplay.from_predictions(y_true, y_pred, display_labels=class_names, cmap="Blues", values_format="d")
     plt.xlabel("Prognozuota klasė")
     plt.ylabel("Tikroji klasė")
@@ -198,7 +198,7 @@ def plot_confusion_matrices(
     plt.savefig(cm_dir / "overall.png")
     plt.close()
 
-    plt.figure(figsize=(10, 8))
+    plt.figure(figsize=(12, 8))
     ConfusionMatrixDisplay.from_predictions(
         y_true, y_pred, display_labels=class_names, cmap="Blues", values_format=".2f", normalize="true"
     )

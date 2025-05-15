@@ -27,10 +27,10 @@ scala run ./src/tokenize.sc -- \
 uv run -m src.plot -i ./results/processed_full.jsonl -o ./results/plots
 
 # Optimize CNN
-uv run -m src.cnn.optimize -i ./results/processed_full.jsonl -o ./results/lstm_optimized --max-trials 20 --overwrite
+uv run -m src.cnn.optimize -i ./results/processed_full.jsonl -o ./results/cnn_optimized --max-trials 20
 
 # Optimize LSTM
-uv run -m src.lstm.optimize -i ./results/processed_full.jsonl -o ./results/lstm_optimized --max-trials 20 --overwrite
+uv run -m src.lstm.optimize -i ./results/processed_full.jsonl -o ./results/lstm_optimized --max-trials 20
 ```
 
 # Connecting to MIF HPC
