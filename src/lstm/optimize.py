@@ -118,8 +118,8 @@ def main(args):
         hp=best_hps,
         metrics=val_metrics,
         out_dir=output_dir,
-        X_val=X_val,
-        y_val=y_val,
+        X=X_val,
+        y=y_val,
         class_names=class_names,
         model_type="best",
     )
@@ -134,8 +134,8 @@ def main(args):
         hp=worst_hps,
         metrics=worst_val_metrics,
         out_dir=output_dir,
-        X_val=X_val,
-        y_val=y_val,
+        X=X_val,
+        y=y_val,
         class_names=class_names,
         model_type="worst",
     )

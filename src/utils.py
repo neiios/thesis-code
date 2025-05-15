@@ -18,7 +18,6 @@ from sklearn.metrics import (
     roc_curve,
     auc,
 )
-from sklearn.model_selection import train_test_split
 from sklearn.preprocessing import LabelEncoder
 import keras
 import keras_tuner as kt
@@ -124,11 +123,11 @@ def run_hyperparameter_optimization(
     vocab_size: int,
     num_classes: int,
     output_dir: Path,
-    project_name: str = "bayes_lstm",
-    max_trials: int = 30,
-    batch_size: int = 32,
-    epochs: int = 20,
-    val_split: float = 0.2,
+    X_val: np.ndarray,
+    y_val: np.ndarray,
+    max_trials: int,
+    batch_size: int,
+    epochs: int,
 ) -> Tuple[
     keras.Model,
     kt.HyperParameters,
@@ -137,8 +136,6 @@ def run_hyperparameter_optimization(
     kt.HyperParameters,
     List[float],
     kt.Tuner,
-    np.ndarray,
-    np.ndarray,
 ]:
     output_dir.mkdir(parents=True, exist_ok=True)
 
@@ -147,15 +144,13 @@ def run_hyperparameter_optimization(
         objective="val_accuracy",
         max_trials=max_trials,
         directory=str(output_dir / "tuner"),
-        project_name=project_name,
         overwrite=True,
     )
 
-    X_tr, X_val, y_tr, y_val = train_test_split(X, y, test_size=val_split, stratify=y)
     early = keras.callbacks.EarlyStopping("val_loss", patience=5, restore_best_weights=True)
 
     tuner.search(
-        X_tr, y_tr, validation_data=(X_val, y_val), epochs=epochs, batch_size=batch_size, callbacks=[early], verbose=1
+        X, y, validation_data=(X_val, y_val), epochs=epochs, batch_size=batch_size, callbacks=[early], verbose=1
     )
 
     best_hp = tuner.get_best_hyperparameters(1)[0]
@@ -166,7 +161,7 @@ def run_hyperparameter_optimization(
     worst_model: keras.Model = tuner.get_best_models(max_trials)[-1]
     worst_val_metrics = worst_model.evaluate(X_val, y_val)
 
-    return best_model, best_hp, best_val_metrics, worst_model, worst_hp, worst_val_metrics, tuner, X_val, y_val
+    return best_model, best_hp, best_val_metrics, worst_model, worst_hp, worst_val_metrics, tuner
 
 
 def save_model_analysis(
@@ -174,8 +169,8 @@ def save_model_analysis(
     hp: kt.HyperParameters,
     metrics: List[float],
     out_dir: Path,
-    X_val: np.ndarray,
-    y_val: np.ndarray,
+    X: np.ndarray,
+    y: np.ndarray,
     class_names: List[str],
     model_type: str = "best",
 ) -> None:
@@ -191,14 +186,14 @@ def save_model_analysis(
         json.dumps(metrics_summary, indent=2, ensure_ascii=False)
     )
 
-    evaluation_metrics = calculate_classification_metrics(model, X_val, y_val, class_names, model_dir)
+    evaluation_metrics = calculate_classification_metrics(model, X, y, class_names, model_dir)
     (model_dir / f"{model_type}_evaluation.json").write_text(
         json.dumps(evaluation_metrics, indent=2, ensure_ascii=False)
     )
 
     keras.utils.plot_model(model, to_file=str(model_dir / f"{model_type}_model_architecture.png"), show_shapes=True)
-    plot_confusion_matrices(model, X_val, y_val, class_names, model_dir)
-    plot_roc_curves(model, X_val, y_val, class_names, model_dir)
+    plot_confusion_matrices(model, X, y, class_names, model_dir)
+    plot_roc_curves(model, X, y, class_names, model_dir)
 
     print(f"[Save] {model_type.capitalize()} model analysis results saved in {model_dir}")
 

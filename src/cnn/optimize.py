@@ -6,19 +6,19 @@ from sklearn.model_selection import train_test_split
 from src.utils import (
     create_vocabulary,
     load_data,
-    load_vocabulary,
     save_vocabulary,
     preprocess_data,
     MAX_SEQ_LENGTH,
     run_hyperparameter_optimization,
     save_model_analysis,
 )
+import time
 
-BATCH_SIZE = 32
-EPOCHS = 20
-TEST_SIZE = 0.1
-VALIDATION_SIZE = 0.2
+TEST_SIZE = 0.2
+VALIDATION_SIZE = 0.25
 CNN_FILTER_SIZES = [3, 4, 5]
+
+# TODO: fix seed
 
 
 def build_cnn_model_tunable(hp, vocab_size: int, num_classes: int) -> keras.Model:
@@ -69,17 +69,17 @@ def build_cnn_model_tunable(hp, vocab_size: int, num_classes: int) -> keras.Mode
 
 
 def main(args):
-    output_dir = Path(args.output_dir)
+    output_dir = Path(str(args.output_dir) + f"_{int(time.time())}")
 
-    if args.vocab_file:
-        token_to_id = load_vocabulary(args.vocab_file)
-    else:
-        token_to_id = create_vocabulary(args.input_file)
-        save_vocabulary(token_to_id, output_dir / "cnn_vocab.json")
+    token_to_id = create_vocabulary(args.input_file)
+    save_vocabulary(token_to_id, output_dir / "cnn_vocab.json")
 
     sequences, categories, is_idiomatic = load_data(args.input_file)
     X, y, class_names, adjusted_labels = preprocess_data(sequences, categories, is_idiomatic, token_to_id)
     X_train, X_test, y_train, y_test = train_test_split(X, y, test_size=TEST_SIZE, stratify=y, random_state=42)
+    X_train, X_val, y_train, y_val = train_test_split(
+        X_train, y_train, test_size=VALIDATION_SIZE, stratify=y_train, random_state=42
+    )
 
     (
         best_model_from_tuner,
@@ -89,20 +89,18 @@ def main(args):
         worst_hps,
         worst_val_metrics,
         tuner,
-        X_val,
-        y_val,
     ) = run_hyperparameter_optimization(
         build_model_fn=build_cnn_model_tunable,
         X=X_train,
         y=y_train,
+        X_val=X_val,
+        y_val=y_val,
         vocab_size=len(token_to_id),
         num_classes=len(class_names),
         output_dir=output_dir,
-        project_name="cnn_tune",
         max_trials=args.max_trials,
-        batch_size=BATCH_SIZE,
-        epochs=EPOCHS,
-        val_split=VALIDATION_SIZE,
+        batch_size=args.batch_size,
+        epochs=args.epochs,
     )
 
     print("\n--- Best Hyperparameters Found ---")
@@ -123,8 +121,8 @@ def main(args):
         hp=best_hps,
         metrics=val_metrics,
         out_dir=output_dir,
-        X_val=X_val,
-        y_val=y_val,
+        X=X_test,
+        y=y_test,
         class_names=class_names,
         model_type="best",
     )
@@ -138,8 +136,8 @@ def main(args):
         hp=worst_hps,
         metrics=worst_val_metrics,
         out_dir=output_dir,
-        X_val=X_val,
-        y_val=y_val,
+        X=X_test,
+        y=y_test,
         class_names=class_names,
         model_type="worst",
     )
@@ -162,16 +160,22 @@ if __name__ == "__main__":
         help="Directory to save the optimized model and artifacts",
     )
     parser.add_argument(
-        "-v",
-        "--vocab-file",
-        type=Path,
-        help="Optional JSON file with vocabulary (will be created if not provided)",
-    )
-    parser.add_argument(
         "--max-trials",
         type=int,
-        default=20,
+        required=True,
         help="Maximum number of hyperparameter configurations to try",
+    )
+    parser.add_argument(
+        "--epochs",
+        type=int,
+        required=True,
+        help="Number of epochs for training the model",
+    )
+    parser.add_argument(
+        "--batch-size",
+        type=int,
+        default=32,
+        help="Batch size for training the model",
     )
 
     args = parser.parse_args()
