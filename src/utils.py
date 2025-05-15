@@ -23,50 +23,7 @@ from sklearn.preprocessing import LabelEncoder
 import keras
 import keras_tuner as kt
 
-
-PAD_TOKEN, UNK_TOKEN = "<PAD>", "<UNK>"
-MAX_SEQ_LENGTH = 500
 sns.set_theme(style="ticks", palette="colorblind")
-
-
-def create_vocabulary(data_path: Path) -> Dict[str, int]:
-    token_set: Set[str] = set()
-
-    with data_path.open(encoding="utf-8") as fh:
-        for line in fh:
-            token_set.update(json.loads(line).get("tokens", []))
-
-    tok2id = {PAD_TOKEN: 0, UNK_TOKEN: 1}
-    tok2id.update({tok: i + 2 for i, tok in enumerate(sorted(token_set))})
-
-    print(f"[Vocabulary] Total unique tokens: {len(tok2id):,}")
-    return tok2id
-
-
-def get_adjusted_labels(labels: List[str], idiomatic: List[bool]) -> List[str]:
-    return ["no_issue" if is_id else lbl for lbl, is_id in zip(labels, idiomatic)]
-
-
-def preprocess_data(
-    sequences: List[List[str]],
-    labels: List[str],
-    is_idiomatic: List[bool],
-    token_to_id: Dict[str, int],
-) -> Tuple[np.ndarray, np.ndarray, List[str], List[str]]:
-    unk = token_to_id[UNK_TOKEN]
-    seq_ids = [[token_to_id.get(tok, unk) for tok in seq] for seq in sequences]
-
-    X = keras.utils.pad_sequences(
-        seq_ids, maxlen=MAX_SEQ_LENGTH, padding="post", truncating="post", value=0, dtype="int32"
-    )
-
-    adjusted = get_adjusted_labels(labels, is_idiomatic)
-    le = LabelEncoder().fit(adjusted)
-    indices = np.asarray(le.transform(adjusted), dtype=np.int64)
-    y = np.eye(len(le.classes_), dtype=np.float32)[indices]
-
-    print(f"[Data] X{X.shape}, y{y.shape} – classes: {list(le.classes_)}")
-    return X, y, list(le.classes_), adjusted
 
 
 def plot_training_history(history: keras.callbacks.History, out_path: Path) -> None:
@@ -90,21 +47,6 @@ def plot_training_history(history: keras.callbacks.History, out_path: Path) -> N
     print(f"[Visualization] Saved → {out_path}")
 
 
-def load_data(jsonl_path: Path) -> Tuple[List[List[str]], List[str], List[bool]]:
-    seqs, lbls, idiom = [], [], []
-
-    with jsonl_path.open(encoding="utf-8") as fh:
-        for line in fh:
-            obj = json.loads(line)
-            if tokens := obj.get("tokens"):
-                seqs.append(tokens)
-                lbls.append(obj.get("category", "unknown"))
-                idiom.append(obj.get("isIdiomatic", False))
-
-    print(f"[Load] Samples read: {len(seqs):,}")
-    return seqs, lbls, idiom
-
-
 def load_vocabulary(path: Path) -> Dict[str, int]:
     print(f"[Vocabulary] Loading from {path}")
     return json.loads(path.read_text())
@@ -115,58 +57,6 @@ def save_vocabulary(tok2id: Dict[str, int], path: Path) -> None:
     path.write_text(json.dumps(tok2id, indent=2, ensure_ascii=False))
 
     print(f"[Vocabulary] Saved → {path}")
-
-
-def run_hyperparameter_optimization(
-    build_model_fn: Callable[[kt.HyperParameters, int, int], keras.Model],
-    X: np.ndarray,
-    y: np.ndarray,
-    vocab_size: int,
-    num_classes: int,
-    output_dir: Path,
-    project_name: str = "bayes_lstm",
-    max_trials: int = 30,
-    batch_size: int = 32,
-    epochs: int = 20,
-    val_split: float = 0.2,
-) -> Tuple[
-    keras.Model,
-    kt.HyperParameters,
-    List[float],
-    keras.Model,
-    kt.HyperParameters,
-    List[float],
-    kt.Tuner,
-    np.ndarray,
-    np.ndarray,
-]:
-    output_dir.mkdir(parents=True, exist_ok=True)
-
-    tuner = kt.BayesianOptimization(
-        lambda hp: build_model_fn(hp, vocab_size, num_classes),
-        objective="val_accuracy",
-        max_trials=max_trials,
-        directory=str(output_dir / "tuner"),
-        project_name=project_name,
-        overwrite=True,
-    )
-
-    X_tr, X_val, y_tr, y_val = train_test_split(X, y, test_size=val_split, stratify=y)
-    early = keras.callbacks.EarlyStopping("val_loss", patience=5, restore_best_weights=True)
-
-    tuner.search(
-        X_tr, y_tr, validation_data=(X_val, y_val), epochs=epochs, batch_size=batch_size, callbacks=[early], verbose=1
-    )
-
-    best_hp = tuner.get_best_hyperparameters(1)[0]
-    best_model: keras.Model = tuner.get_best_models(1)[0]
-    best_val_metrics = best_model.evaluate(X_val, y_val)
-
-    worst_hp = tuner.get_best_hyperparameters(max_trials)[-1]
-    worst_model: keras.Model = tuner.get_best_models(max_trials)[-1]
-    worst_val_metrics = worst_model.evaluate(X_val, y_val)
-
-    return best_model, best_hp, best_val_metrics, worst_model, worst_hp, worst_val_metrics, tuner, X_val, y_val
 
 
 def save_model_analysis(
