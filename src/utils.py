@@ -129,7 +129,17 @@ def run_hyperparameter_optimization(
     batch_size: int = 32,
     epochs: int = 20,
     val_split: float = 0.2,
-) -> Tuple[keras.Model, kt.HyperParameters, List[float], kt.Tuner, np.ndarray, np.ndarray]:
+) -> Tuple[
+    keras.Model,
+    kt.HyperParameters,
+    List[float],
+    keras.Model,
+    kt.HyperParameters,
+    List[float],
+    kt.Tuner,
+    np.ndarray,
+    np.ndarray,
+]:
     output_dir.mkdir(parents=True, exist_ok=True)
 
     tuner = kt.BayesianOptimization(
@@ -150,9 +160,47 @@ def run_hyperparameter_optimization(
 
     best_hp = tuner.get_best_hyperparameters(1)[0]
     best_model: keras.Model = tuner.get_best_models(1)[0]
-    val_metrics = best_model.evaluate(X_val, y_val)
+    best_val_metrics = best_model.evaluate(X_val, y_val)
 
-    return best_model, best_hp, val_metrics, tuner, X_val, y_val
+    worst_hp = tuner.get_best_hyperparameters(max_trials)[-1]
+    worst_model: keras.Model = tuner.get_best_models(max_trials)[-1]
+    worst_val_metrics = worst_model.evaluate(X_val, y_val)
+
+    return best_model, best_hp, best_val_metrics, worst_model, worst_hp, worst_val_metrics, tuner, X_val, y_val
+
+
+def save_model_analysis(
+    model: keras.Model,
+    hp: kt.HyperParameters,
+    metrics: List[float],
+    out_dir: Path,
+    X_val: np.ndarray,
+    y_val: np.ndarray,
+    class_names: List[str],
+    model_type: str = "best",
+) -> None:
+    model_dir = out_dir / model_type
+    model_dir.mkdir(parents=True, exist_ok=True)
+
+    hp_json = json.dumps({k: hp.get(k) for k in hp.values}, indent=2, ensure_ascii=False)
+    (model_dir / f"{model_type}_hyperparameters.json").write_text(hp_json)
+
+    metrics_names = model.metrics_names
+    metrics_summary = {name: float(value) for name, value in zip(metrics_names, metrics)}
+    (model_dir / f"{model_type}_metrics_summary.json").write_text(
+        json.dumps(metrics_summary, indent=2, ensure_ascii=False)
+    )
+
+    evaluation_metrics = calculate_classification_metrics(model, X_val, y_val, class_names, model_dir)
+    (model_dir / f"{model_type}_evaluation.json").write_text(
+        json.dumps(evaluation_metrics, indent=2, ensure_ascii=False)
+    )
+
+    keras.utils.plot_model(model, to_file=str(model_dir / f"{model_type}_model_architecture.png"), show_shapes=True)
+    plot_confusion_matrices(model, X_val, y_val, class_names, model_dir)
+    plot_roc_curves(model, X_val, y_val, class_names, model_dir)
+
+    print(f"[Save] {model_type.capitalize()} model analysis results saved in {model_dir}")
 
 
 def save_optimization_results(

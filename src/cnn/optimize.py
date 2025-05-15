@@ -11,10 +11,7 @@ from src.utils import (
     preprocess_data,
     MAX_SEQ_LENGTH,
     run_hyperparameter_optimization,
-    save_optimization_results,
-    plot_confusion_matrices,
-    plot_roc_curves,
-    calculate_classification_metrics,
+    save_model_analysis,
 )
 
 BATCH_SIZE = 32
@@ -84,7 +81,17 @@ def main(args):
     X, y, class_names, adjusted_labels = preprocess_data(sequences, categories, is_idiomatic, token_to_id)
     X_train, X_test, y_train, y_test = train_test_split(X, y, test_size=TEST_SIZE, stratify=y, random_state=42)
 
-    best_model_from_tuner, best_hps, val_metrics, tuner, X_val, y_val = run_hyperparameter_optimization(
+    (
+        best_model_from_tuner,
+        best_hps,
+        val_metrics,
+        worst_model_from_tuner,
+        worst_hps,
+        worst_val_metrics,
+        tuner,
+        X_val,
+        y_val,
+    ) = run_hyperparameter_optimization(
         build_model_fn=build_cnn_model_tunable,
         X=X_train,
         y=y_train,
@@ -111,40 +118,30 @@ def main(args):
     best_model.summary()
     print(f"Total parameters: {best_model.count_params():,}")
 
-    save_optimization_results(
+    save_model_analysis(
         model=best_model,
         hp=best_hps,
-        tuner=tuner,
+        metrics=val_metrics,
         out_dir=output_dir,
         X_val=X_val,
         y_val=y_val,
         class_names=class_names,
+        model_type="best",
     )
 
     best_model.save(output_dir / "optimized_model.keras", include_optimizer=True)
 
-    plot_confusion_matrices(
-        model=best_model,
-        X_test=X_test,
-        y_test=y_test,
-        class_names=class_names,
+    worst_model = build_cnn_model_tunable(worst_hps, len(token_to_id), len(class_names))
+    worst_model.set_weights(worst_model_from_tuner.get_weights())
+    save_model_analysis(
+        model=worst_model,
+        hp=worst_hps,
+        metrics=worst_val_metrics,
         out_dir=output_dir,
-    )
-
-    plot_roc_curves(
-        model=best_model,
-        X_test=X_test,
-        y_test=y_test,
+        X_val=X_val,
+        y_val=y_val,
         class_names=class_names,
-        out_dir=output_dir,
-    )
-
-    calculate_classification_metrics(
-        model=best_model,
-        X=X_test,
-        y=y_test,
-        class_names=class_names,
-        out_dir=output_dir / "metrics",
+        model_type="worst",
     )
 
 
