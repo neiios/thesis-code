@@ -11,3 +11,4 @@ node_modules
 results
 !results/raw_full.jsonl
 !results/processed_full.jsonl
+.github

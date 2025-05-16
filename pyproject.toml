@@ -34,4 +34,9 @@ url = "https://download.pytorch.org/whl/rocm6.3"
 explicit = true
 
 [tool.ruff]
-line-length = 120
+line-length = 140
+
+[dependency-groups]
+dev = [
+    "ipykernel>=6.29.5",
+]

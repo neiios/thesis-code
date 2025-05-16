@@ -24,13 +24,13 @@ scala run ./src/tokenize.sc -- \
   --output-dir ./results
 
 # Create dataset plots
-uv run -m src.plot -i ./results/processed_full.jsonl -o ./results/plots
+uv run -m src.plot_dataset -i ./results/processed_full.jsonl -o ./results/plots
 
 # Optimize CNN
-uv run -m src.cnn.optimize -i ./results/processed_full.jsonl -o ./results/cnn_optimized --max-trials 20
+uv run -m src.optimize_hyperparameters -i ./results/processed_full.jsonl -o ./results/cnn --max-trials 30 --epochs 10
 
 # Optimize LSTM
-uv run -m src.lstm.optimize -i ./results/processed_full.jsonl -o ./results/lstm_optimized --max-trials 20
+uv run -m src.optimize_hyperparameters -i ./results/processed_full.jsonl -o ./results/lstm --max-trials 30 --epochs 10 --lstm=true
 ```
 
 # Connecting to MIF HPC
