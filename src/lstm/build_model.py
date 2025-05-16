@@ -20,7 +20,7 @@ def build_lstm_model(hp: kt.HyperParameters, vocabulary: dict[str, int], class_n
     learning_rate = hp.Float("learning_rate", min_value=1e-4, max_value=1e-2, sampling="log", default=1e-3)
 
     embedding = Embedding(input_dim=len(vocabulary), output_dim=embedding_dim, mask_zero=True, name="embedding")(inputs)
-    lstm = Bidirectional(LSTM(lstm_units, return_sequences=True, recurrent_dropout=recurrent_dropout, name="lstm"))(embedding)  # type: ignore
+    lstm = Bidirectional(LSTM(lstm_units, recurrent_dropout=recurrent_dropout, name="lstm"))(embedding)  # type: ignore
     dropout = Dropout(dropout_rate, name="dropout")(lstm)
     outputs = Dense(len(class_names), activation="softmax", name="output")(dropout)
     model = keras.Model(inputs=inputs, outputs=outputs)
@@ -33,7 +33,7 @@ def build_lstm_model(hp: kt.HyperParameters, vocabulary: dict[str, int], class_n
     model.compile(
         optimizer=optimizer,
         loss="categorical_crossentropy",
-        metrics=["accuracy"],
+        metrics=["accuracy", keras.metrics.F1Score(average="weighted", name="f1score")],
     )
 
     return model

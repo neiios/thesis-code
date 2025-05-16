@@ -4,12 +4,13 @@ import keras
 import keras_tuner as kt
 from sklearn.model_selection import train_test_split
 import numpy as np
+import sys
 import time
 from typing import Callable
 
 from src.reader import read_dataset, create_vocabulary, preprocess_data, save_vocabulary
-from cnn.build_model import build_cnn_model
-from lstm.build_model import build_lstm_model
+from src.cnn.build_model import build_cnn_model
+from src.lstm.build_model import build_lstm_model
 
 MAX_SEQ_LENGTH = 500
 RANDOM_SEED = 2025
@@ -32,7 +33,7 @@ def run_hyperparameter_optimization(
 ) -> kt.Tuner:
     tuner = kt.BayesianOptimization(
         lambda hp: build_model_fn(hp, vocabulary, classes, max_seq_length),
-        objective=kt.Objective("val_f1_score", direction="max"),
+        objective=kt.Objective("val_f1score", direction="max"),
         max_trials=max_trials,
         directory=str(output_dir / "tuner"),
     )
@@ -46,8 +47,6 @@ def run_hyperparameter_optimization(
         validation_data=(X_val, y_val),
         callbacks=[early_stopping],
     )
-
-    tuner.results_summary(num_trials=max_trials)
 
     return tuner
 
@@ -93,9 +92,24 @@ def main(args):
         output_dir=output_dir,
     )
 
-    all_hps = tuner.get_best_hyperparameters(num_trials=args.max_trials)
+    original_stdout = sys.stdout
+    results_file = output_dir / "hyperparameter_results.txt"
+    with open(results_file, "w") as f:
+        sys.stdout = f
+        tuner.results_summary(num_trials=args.max_trials)
+
+        all_hps = tuner.get_best_hyperparameters(num_trials=args.max_trials)
+        f.write("\n\n")
+        f.write("Best hyperparameters:\n")
+        f.write(f"{all_hps[0].values}\n")
+
+        f.write("\nWorst hyperparameters:\n")
+        f.write(f"{all_hps[-1].values}\n")
+    sys.stdout = original_stdout
+
     print(f"[Model] Best hyperparameters: {all_hps[0].values}")
     print(f"[Model] Worst hyperparameters: {all_hps[-1].values}")
+    print(f"[Model] Results saved to {results_file}")
 
 
 if __name__ == "__main__":

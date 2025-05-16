@@ -48,7 +48,7 @@ def build_cnn_model(hp: kt.HyperParameters, vocabulary: dict[str, int], class_na
     model.compile(
         optimizer=optimizer,
         loss="categorical_crossentropy",
-        metrics=["accuracy"],
+        metrics=["accuracy", keras.metrics.F1Score(average="weighted", name="f1score")],
     )
 
     return model
