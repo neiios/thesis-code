@@ -6,7 +6,8 @@ import matplotlib.pyplot as plt
 import pandas as pd
 import seaborn as sns
 from matplotlib.ticker import MaxNLocator
-from src.utils import create_vocabulary, load_data, get_adjusted_labels, save_vocabulary
+
+from src.reader import create_vocabulary, read_dataset
 
 sns.set_theme(style="ticks", palette="colorblind")
 
@@ -57,25 +58,23 @@ def plot_idiomaticity_distribution(is_idiomatic_list: list[bool], output_path: P
 
 
 def main(args):
-    print("Starting dataset analysis")
-
     output_dir = Path(args.output_dir)
     output_dir.mkdir(parents=True, exist_ok=True)
 
-    sequences, categories, is_idiomatic, sequence_lengths = load_data(args.input_file)
+    entries = read_dataset(args.input_file)
+    vocabulary = create_vocabulary(args.input_file)
 
-    adjusted_labels = get_adjusted_labels(categories, is_idiomatic)
-
-    token_to_id = create_vocabulary(args.input_file)
-    save_vocabulary(token_to_id, output_dir / "vocab.json")
+    sequence_lengths = [len(entry.tokens) for entry in entries]
+    adjusted_labels = [entry.label for entry in entries]
+    is_idiomatic = [entry.label == "idiomatic" for entry in entries]
 
     plot_snippet_length_distribution(sequence_lengths, output_dir / "snippet_length_distribution.png")
     plot_class_distribution(adjusted_labels, output_dir / "class_distribution.png")
     plot_idiomaticity_distribution(is_idiomatic, output_dir / "idiomaticity_distribution.png")
 
     stats = {
-        "total_samples": len(sequences),
-        "vocabulary_size": len(token_to_id),
+        "total_samples": len(entries),
+        "vocabulary_size": len(vocabulary),
         "avg_sequence_length": float(np.mean(sequence_lengths)),
         "median_sequence_length": float(np.median(sequence_lengths)),
         "max_sequence_length": int(np.max(sequence_lengths)),
@@ -91,7 +90,7 @@ def main(args):
 
 
 if __name__ == "__main__":
-    parser = argparse.ArgumentParser(description="Analyze and visualize code smell dataset")
+    parser = argparse.ArgumentParser(description="Analyze and visualize the dataset")
     parser.add_argument(
         "-i",
         "--input-file",
