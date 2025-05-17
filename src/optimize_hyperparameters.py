@@ -9,8 +9,8 @@ import time
 from typing import Callable
 
 from src.reader import read_dataset, create_vocabulary, preprocess_data, save_vocabulary
-from src.cnn.build_model import build_cnn_model
-from src.lstm.build_model import build_lstm_model
+from src.build_cnn import build_cnn_model
+from src.build_lstm import build_lstm_model
 
 MAX_SEQ_LENGTH = 500
 RANDOM_SEED = 2025
