@@ -8,7 +8,6 @@
 - Scala 3: Code generation and tokenization
 - uv: Python package management and dependency resolution
 - Nix: Development environment management
-- JSON/JSONL: Data storage and interchange format
 
 ## Directory Structure
 
@@ -52,7 +51,8 @@ uv sync
 ```
 
 ### 1. Generate Dataset
-Generate Scala code snippets across multiple domains using LLM API:
+
+Generate Scala code snippets:
 
 ```sh
 scala run ./src/generate.sc -- \
@@ -66,6 +66,7 @@ scala run ./src/generate.sc -- \
 ```
 
 ### 2. Merge Datasets
+
 Combine generated snippets from different categories:
 
 ```sh
@@ -75,6 +76,7 @@ cat ./results/classes_for_data_snippets.jsonl \
 ```
 
 ### 3. Tokenize Code Snippets
+
 Process and tokenize the generated code for ML training:
 
 ```sh
@@ -84,6 +86,7 @@ scala run ./src/tokenize.sc -- \
 ```
 
 ### 4. Visualize Dataset
+
 Generate statistical plots and analysis of the dataset:
 
 ```sh
@@ -93,6 +96,7 @@ uv run -m src.plot_dataset -i ./results/processed_full.jsonl -o ./results/plots
 ### 5. Train Models
 
 Optimize CNN hyperparameters:
+
 ```sh
 uv run -m src.optimize_hyperparameters \
   -i ./results/processed_full.jsonl \
@@ -112,7 +116,8 @@ uv run -m src.optimize_hyperparameters \
 ```
 
 ### 6. Generate Final Visualizations
-Create comprehensive analysis and visualizations:
+
+Create visualizations:
 
 ```sh
 uv run visualize_cnn.py
