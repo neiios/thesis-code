@@ -78,6 +78,12 @@ def main(args):
         stratify=np.argmax(y_train_pool, axis=1),
     )
 
+    print(f"Class names: {class_names}")
+    print("\nData split:")
+    print(f"- Training: {X_train.shape[0]} samples")
+    print(f"- Validation: {X_val.shape[0]} samples")
+    print(f"- Test: {X_test.shape[0]} samples")
+
     tuner = run_hyperparameter_optimization(
         build_model_fn=build_lstm_model if args.lstm else build_cnn_model,
         X=X_train,
